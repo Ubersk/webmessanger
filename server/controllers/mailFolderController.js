@@ -1,7 +1,9 @@
 class MailFolderController {
-  async create(req, res) {}
+  async createFolderMsg(req, res) {}
 
-  async getAll(req, res) {}
+  async getFolderMsg(req, res) {}
+
+  async deleteFolderMsg(req, res) {}
 }
 
 module.exports = new MailFolderController();
