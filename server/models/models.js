@@ -4,7 +4,7 @@ const { DataTypes } = require("sequelize");
 const User = sequelize.define("user", {
   id_user: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING },
-  password: { type: DataTypes.INTEGER },
+  password: { type: DataTypes.STRING },
   isAdmin: { type: DataTypes.BOOLEAN },
 });
 const UserInformation = sequelize.define("user_info", {
