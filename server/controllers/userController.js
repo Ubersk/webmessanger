@@ -42,9 +42,8 @@ class UserController {
   }
 
   async check(req, res, next) {
-    res.json({ message: "All RIGHT!" });
-    // const token = generateJwt(req.user.id, req.user.name, req.user.isAdmin);
-    // return res.json({ token });
+    const token = generateJwt(req.user.id, req.user.name, req.user.isAdmin);
+    return res.json({ token });
   }
 }
 
