@@ -1,0 +1,5 @@
+export const ADMIN_ROUTE = '/admin'
+export const REGISTRATION_ROUTE = '/admin'
+export const LOGIN_ROUTE = '/admin'
+export const MAIL_ROUTE = '/admin'
+export const MAILONE_ROUTE = '/admin'
