@@ -4,6 +4,7 @@ import { authRoutes, publicRoutes } from "../routes";
 import Mail from "../pages/Mail.js";
 import { Context } from "../index";
 import Admin from "../pages/Admin";
+import Auth from "../pages/Auth";
 
 const AppRouter = () => {
     const { user } = useContext(Context);
@@ -17,7 +18,7 @@ const AppRouter = () => {
             {publicRoutes.map(({ path, Component }) => (
                 <Route key={path} path={path} element={<Component />} exact />
             ))}
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/auth" element={<Auth />} />
         </Routes>
     );
 };
