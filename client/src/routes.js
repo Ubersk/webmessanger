@@ -9,7 +9,6 @@ import {
 import AdminMenu from "./pages/AdminMenu";
 import MailPage from "./pages/MailPage";
 import Mail from "./pages/Mail";
-import UserProfile from "./pages/UserProfile";
 import Auth from "./pages/Auth";
 import userProfile from "./pages/UserProfile";
 

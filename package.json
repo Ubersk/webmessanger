@@ -1,7 +1,13 @@
 {
   "dependencies": {
+    "axios": "^1.2.1",
     "bcrypt": "^5.1.0",
+    "bootstrap": "^5.2.3",
     "jsonwebtoken": "^8.5.1",
-    "prettier": "^2.8.0"
+    "mobx": "^6.7.0",
+    "mobx-react-lite": "^3.4.0",
+    "prettier": "^2.8.0",
+    "react-bootstrap": "^2.7.0",
+    "react-router-dom": "^6.5.0"
   }
 }
