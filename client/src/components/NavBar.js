@@ -9,12 +9,12 @@ const NavBar = observer(() => {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="/">Почта</Navbar.Brand>
+        <Navbar.Brand  href="/">Почта</Navbar.Brand>
 
           {user.isAuth ?
             <Nav className="ml-auto" style={{color:'white'}}>
-            <Button className="ms-lg-5 " variant={"outline-info"}> Профиль</Button>
-            <Button href="/login" variant={"outline-danger"}className="ms-lg-2" onClick={()=>user.setIsAuth(false)}>  Выход</Button>
+            <Button size="lg" className="ms-lg-5 " variant={"outline-info"}> Профиль</Button>
+            <Button size="lg" href="/login" variant={"outline-danger"}className="ms-lg-2" onClick={()=>user.setIsAuth(false)}>  Выход</Button>
             </Nav>
           :
         <Nav className="ml-2" style={{color:'white'}}>

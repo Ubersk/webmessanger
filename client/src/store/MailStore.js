@@ -18,10 +18,20 @@ export default class MailStore {
       ]
     this._msg =
       [
-        {id:1, name:'Празднование Нового года', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
-        {id:2, name:'Сдача ежегодных отчетов', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
-        {id:3, name:'Объявление: Котята!', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
-        {id:4, name:'Верни деньги.', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
+        {id:1, author:'Я',name: 'Празднование Нового года', msg_body:'Это пример сообщения.', dateCreate:'31.07.2001'},
+        {id:2, author:'Я',name:'Сдача ежегодных отчетов', msg_body:'Это пример сообщения.', dateCreate:'31.07.2001'},
+        {id:3, author:'Я',name:'Объявление: Котята!', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
+        {id:4, author:'Я',name:'Верни деньги.', msg_body:'Это пример сообщения.', dateCreate:'31.07.2001'},
+        {id:5, author:'Я',name:'Верни деньги.', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
+        {id:6, author:'Я',name:'Верни деньги.', msg_body:'Это пример сообщения.', dateCreate:'31.07.2001'},
+        {id:6, author:'Я',name:'Верни деньги.', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
+        {id:6, author:'Я',name:'Верни деньги.', msg_body:'Это пример сообщения.', dateCreate:'31.07.2001'},
+        {id:6, author:'Я',name:'Верни деньги.', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
+        {id:6, author:'Я',name:'Верни деньги.', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
+        {id:6, author:'Я',name:'Верни деньги.', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
+        {id:6, author:'Я',name:'Верни деньги.', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
+        {id:6, author:'Я',name:'Верни деньги.', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
+        {id:6, author:'Я',name:'Верни деньги.', msg_body:'ауцпауцйапуцйуйца', dateCreate:'31.07.2001'},
       ]
     this._selectedType = {}
     makeAutoObservable(this)
