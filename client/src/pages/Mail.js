@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Mail = () => {
-    return (
-        <div>
-            Почта.Основная страница.
-        </div>
-    );
+  return (
+    <div>
+      Основная страница
+    </div>
+  );
 };
 
 export default Mail;

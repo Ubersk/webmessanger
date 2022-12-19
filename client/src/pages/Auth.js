@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Auth = () => {
-    return (
-        <div>
-            Авторизация
-        </div>
-    );
+  return (
+    <div>
+      АВТОРИЗАЦИЯ
+    </div>
+  );
 };
 
 export default Auth;
