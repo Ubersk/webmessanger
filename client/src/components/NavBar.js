@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import { Context } from "../index";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 import { observer } from "mobx-react-lite";
-
+import { useNavigate} from "react-router-dom";
+import { ADMIN_ROUTES, LOGIN_ROUTES, USERPROFILE_ROUTES } from "../utils/consts";
 
 const NavBar = observer(() => {
   const {user} = useContext(Context)
+  const navigate = useNavigate()
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -13,8 +15,19 @@ const NavBar = observer(() => {
 
           {user.isAuth ?
             <Nav className="ml-auto" style={{color:'white'}}>
-            <Button size="lg" className="ms-lg-5 " variant={"outline-info"}> Профиль</Button>
-            <Button size="lg" href="/login" variant={"outline-danger"}className="ms-lg-2" onClick={()=>user.setIsAuth(false)}>  Выход</Button>
+            <Button
+              className="ms-lg-5 "
+              variant={"outline-info"}
+              onClick={()=>navigate(ADMIN_ROUTES)}> Админ</Button>
+            <Button
+              className="ms-lg-5 "
+              variant={"outline-info"}
+              onClick={()=>navigate(USERPROFILE_ROUTES)}> Профиль</Button>
+            <Button
+              variant={"outline-danger"}
+              className="ms-lg-2"
+              onClick={()=>navigate(LOGIN_ROUTES)}
+              onClick={()=>user.setIsAuth(false)}>  Выход</Button>
             </Nav>
           :
         <Nav className="ml-2" style={{color:'white'}}>

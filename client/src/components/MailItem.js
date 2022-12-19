@@ -6,7 +6,7 @@ import { MESSAGE_ROUTES } from "../utils/consts";
 const MailItem = ({mail}) => {
   const navigate = useNavigate()
   return (
-    <Col
+    <Col md={8}
     className="d-flex flex-fill mt-3"
     onClick={()=> navigate(MESSAGE_ROUTES + '/' + mail.id)}>
       <Card

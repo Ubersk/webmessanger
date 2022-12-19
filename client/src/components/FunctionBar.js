@@ -19,7 +19,7 @@ const FunctionBar = observer(() => {
         style={{minWidth:`300px`}}
       />
       <Button   variant="outline-success">Поиск</Button>
-      <ButtonGroup className="ms-lg-5 dropdown-center p-2" aria-label="Second group">
+      <ButtonGroup className="ms-lg-5 dropdown-center" aria-label="Second group">
         <Button>Создать</Button>
         <Button>Ответить</Button>
         <Button>Переслать</Button>
