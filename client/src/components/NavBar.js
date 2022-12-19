@@ -2,40 +2,59 @@ import React, { useContext } from "react";
 import { Context } from "../index";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 import { observer } from "mobx-react-lite";
-import { useNavigate} from "react-router-dom";
-import { ADMIN_ROUTES, LOGIN_ROUTES, USERPROFILE_ROUTES } from "../utils/consts";
+import { useNavigate } from "react-router-dom";
+import {
+  ADMIN_ROUTES,
+  LOGIN_ROUTES,
+  USERPROFILE_ROUTES,
+} from "../utils/consts";
 
 const NavBar = observer(() => {
-  const {user} = useContext(Context)
-  const navigate = useNavigate()
+  const { user } = useContext(Context);
+  const navigate = useNavigate();
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand  href="/">Почта</Navbar.Brand>
+        <Navbar.Brand href="/">Почта</Navbar.Brand>
 
-          {user.isAuth ?
-            <Nav className="ml-auto" style={{color:'white'}}>
+        {user.isAuth ? (
+          <Nav className="ml-auto" style={{ color: "white" }}>
             <Button
               className="ms-lg-5 "
               variant={"outline-info"}
-              onClick={()=>navigate(ADMIN_ROUTES)}> Админ</Button>
+              onClick={() => navigate(ADMIN_ROUTES)}
+            >
+              {" "}
+              Админ
+            </Button>
             <Button
               className="ms-lg-5 "
               variant={"outline-info"}
-              onClick={()=>navigate(USERPROFILE_ROUTES)}> Профиль</Button>
+              onClick={() => navigate(USERPROFILE_ROUTES)}
+            >
+              {" "}
+              Профиль
+            </Button>
             <Button
               variant={"outline-danger"}
               className="ms-lg-2"
-              onClick={()=>navigate(LOGIN_ROUTES)}
-              onClick={()=>user.setIsAuth(false)}>  Выход</Button>
-            </Nav>
-          :
-        <Nav className="ml-2" style={{color:'white'}}>
-          <Button variant={"outline-warning"} onClick={()=>user.setIsAuth(true)}> Авторизация</Button>
-        </Nav>
-          }
-
-
+              onClick={() => navigate(LOGIN_ROUTES)(user.setIsAuth(false))}
+            >
+              {" "}
+              Выход
+            </Button>
+          </Nav>
+        ) : (
+          <Nav className="ml-2" style={{ color: "white" }}>
+            <Button
+              variant={"outline-warning"}
+              onClick={() => user.setIsAuth(true)}
+            >
+              {" "}
+              Авторизация
+            </Button>
+          </Nav>
+        )}
       </Container>
     </Navbar>
   );
