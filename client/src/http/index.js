@@ -2,11 +2,11 @@ import axios from "axios";
 
 //Запросы для не авторизованных пользователей
 const $host = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: "http://localhost:7000/",
 });
 
 const $authHost = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: "http://localhost:7000/",
 });
 const authInterceptor = (config) => {
   config.headers.authorization = `Ubersk ${localStorage.getItem("token")}`;
