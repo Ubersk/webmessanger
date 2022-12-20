@@ -25,6 +25,7 @@ const Auth = observer(() => {
       }
       user.setUser(user);
       user.setIsAuth(true);
+      console.log(user);
       navigate(MAIL_ROUTES);
     } catch (e) {
       alert(e.response.data.message);
@@ -49,6 +50,7 @@ const Auth = observer(() => {
             placeholder={isLogin ? "Введите ваш пароль" : "Введите пароль"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            type="password"
           />
 
           <Container>
@@ -60,6 +62,7 @@ const Auth = observer(() => {
                   variant={"outline-primary"}
                   onClick={click}
                 >
+
                   Войти
                 </Button>
                 <Button className="mt-3 col-md-4" variant="link">

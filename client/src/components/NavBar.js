@@ -38,7 +38,7 @@ const NavBar = observer(() => {
             <Button
               variant={"outline-danger"}
               className="ms-lg-2"
-              onClick={() => navigate(LOGIN_ROUTES)}
+              onClick={() => navigate(LOGIN_ROUTES)((user.isAuth = false))}
             >
               Выход
             </Button>
