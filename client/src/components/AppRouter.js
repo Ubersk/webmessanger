@@ -4,22 +4,41 @@ import { Route, Routes } from "react-router-dom";
 import { authRoutes, publicRoutes } from "../routes";
 import { Context } from "../index";
 import AdminMenu from "../pages/AdminMenu";
+import { RequireAuth } from "../hoc/RequireAuth";
+import { MAIL_ROUTES, MESSAGE_ROUTES } from "../utils/consts";
+import Mail from "../pages/Mail";
+import MailPage from "../pages/MailPage";
 
 const AppRouter = () => {
   const { user } = useContext(Context);
   console.log(user);
   return (
     <Routes>
-      {user.isAuth &&
-        authRoutes.map(({ path, Component }) => (
-          <Route key={path} path={path} element={<Component />} />
-        ))}
       {publicRoutes.map(({ path, Component }) => (
-        <Route key={path} path={path} element={<Component />} />
+        <Route
+          key={path}
+          path={path}
+          element={<Component />} />
       ))}
-      <Route path="/admin" element={<AdminMenu />} />
+      {authRoutes.map(({ path, Component }) => (
+        <Route
+          key={path}
+          path={path}
+          element={<RequireAuth><Component /></RequireAuth>} />
+      ))}
     </Routes>
   );
 };
 
+//
+// <Routes>
+//   {user.isAuth &&
+//     authRoutes.map(({ path, Component }) => (
+//       <Route key={path} path={path} element={<Component />} />
+//     ))}
+//   {publicRoutes.map(({ path, Component }) => (
+//     <Route key={path} path={path} element={<Component />} />
+//   ))}
+//   <Route path="/admin" element={<AdminMenu />} />
+// </Routes>
 export default AppRouter;

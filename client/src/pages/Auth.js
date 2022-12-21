@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const Auth = observer(() => {
   const { user } = useContext(Context);
+  const { isAuth, setIsAuth } = useContext(Context);
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTES;
   const [name, setName] = useState("");
@@ -23,7 +24,7 @@ const Auth = observer(() => {
       } else {
         data = await registration(name, password);
       }
-      user.setUser(user);
+      user.setUser(data);
       user.setIsAuth(true);
       console.log(user);
       navigate(MAIL_ROUTES);
@@ -62,7 +63,6 @@ const Auth = observer(() => {
                   variant={"outline-primary"}
                   onClick={click}
                 >
-
                   Войти
                 </Button>
                 <Button className="mt-3 col-md-4" variant="link">
