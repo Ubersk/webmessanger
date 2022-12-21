@@ -2,7 +2,12 @@ import { makeAutoObservable } from "mobx";
 
 export default class MailStore {
   constructor() {
-    this._types = [];
+    this._types = [
+      { id: 1, name: "Удалить" },
+      { id: 2, name: "Создать" },
+      { id: 3, name: "Переслать" },
+      { id: 4, name: "Ответить" },
+    ];
     this._funcmail = [
       { id: 1, name: "Удалить" },
       { id: 2, name: "Создать" },
@@ -113,6 +118,22 @@ export default class MailStore {
     makeAutoObservable(this);
   }
 
+  get types() {
+    return this._types;
+  }
+
+  get func() {
+    return this._funcmail;
+  }
+
+  get msg() {
+    return this._msg;
+  }
+
+  get selectedType() {
+    return this._selectedType;
+  }
+
   setTypes(types) {
     this._types = types;
   }
@@ -131,21 +152,5 @@ export default class MailStore {
 
   setSelectedFunc(func) {
     this._selectedType = func;
-  }
-
-  get types() {
-    return this._types;
-  }
-
-  get func() {
-    return this._funcmail;
-  }
-
-  get msg() {
-    return this._msg;
-  }
-
-  get selectedType() {
-    return this._selectedType;
   }
 }

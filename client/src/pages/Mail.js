@@ -7,12 +7,12 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import { fetchTypes } from "../http/mailAPI";
 
-const Mail = observer(() => {
-  const { mail } = useContext(Context)
+const Mail = () => {
+  // const { mail } = useContext(Context);
 
-  useEffect(() => {
-    fetchTypes().then(data => mail.setTypes(data))
-  }, [])
+  // useEffect(() => {
+  //   fetchTypes().then(data => mail.setTypes(data))
+  // }, [])
 
   return (
     <Container className="mt-3">
@@ -27,6 +27,5 @@ const Mail = observer(() => {
       </Row>
     </Container>
   );
-});
-
+};
 export default Mail;
