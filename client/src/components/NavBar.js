@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../index";
-import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 import {
@@ -12,6 +12,12 @@ import {
 const NavBar = observer(() => {
   const { user } = useContext(Context);
   const navigate = useNavigate();
+  const logOut = () => {
+    user.setUser({});
+    user.setIsAuth(false);
+    localStorage.setItem("token", {});
+  };
+
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -19,14 +25,16 @@ const NavBar = observer(() => {
 
         {user.isAuth ? (
           <Nav className="ml-auto" style={{ color: "white" }}>
-            <Button
-              className="ms-lg-5 "
-              variant={"outline-info"}
-              onClick={() => navigate(ADMIN_ROUTES)}
-            >
-              {" "}
-              Админ
-            </Button>
+            <div>
+              <Button
+                className="ms-lg-5 "
+                variant={"outline-info"}
+                onClick={() => navigate(ADMIN_ROUTES)}
+              >
+                Админ
+              </Button>
+            </div>
+
             <Button
               className="ms-lg-5 "
               variant={"outline-info"}
@@ -38,7 +46,7 @@ const NavBar = observer(() => {
             <Button
               variant={"outline-danger"}
               className="ms-lg-2"
-              onClick={() => navigate(LOGIN_ROUTES)((user.isAuth = false))}
+              onClick={() => logOut()}
             >
               Выход
             </Button>
@@ -49,7 +57,6 @@ const NavBar = observer(() => {
               variant={"outline-warning"}
               onClick={() => navigate(LOGIN_ROUTES)}
             >
-              {" "}
               Авторизация
             </Button>
           </Nav>

@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 const Auth = observer(() => {
   const { user } = useContext(Context);
-  const { isAuth, setIsAuth } = useContext(Context);
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTES;
   const [name, setName] = useState("");

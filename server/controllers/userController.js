@@ -4,9 +4,9 @@ const { User } = require("../models/models");
 const jwt = require("jsonwebtoken");
 
 const generateJwt = (id, name, isAdmin) => {
-  return jwt.sign(
-      { id, name, isAdmin }, process.env.SECRET_KEY, {
-    expiresIn: "24h"});
+  return jwt.sign({ id, name, isAdmin }, process.env.SECRET_KEY, {
+    expiresIn: "24h",
+  });
 };
 
 class UserController {
@@ -41,7 +41,7 @@ class UserController {
     return res.json({ token });
   }
 
-  async check(req, res, next) {
+  async check(req, res) {
     const token = generateJwt(req.user.id, req.user.name, req.user.isAdmin);
     return res.json({ token });
   }
