@@ -4,7 +4,7 @@ import AppRouter from "./components/AppRouter";
 import Navbar from "./components/NavBar";
 import { observer } from "mobx-react-lite";
 import { Context } from "./index";
-import { check } from "./http/UserAPI";
+import {check, fetchAllUsers} from "./http/UserAPI";
 import { Spinner } from "react-bootstrap";
 
 const App = observer(() => {

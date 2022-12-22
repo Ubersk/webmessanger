@@ -23,3 +23,12 @@ export const check = async () => {
   localStorage.setItem("token", data.token);
   return jwt_decode(data.token);
 };
+export const fetchAllUsers = async () => {
+  const { data } = await $authHost.get("api/userInfo");
+  return data;
+};
+
+export const fetchOneUser = async (id) => {
+  const { data } = await $authHost.get("api/userInfo/"+id);
+  return data;
+};

@@ -5,7 +5,6 @@ import { ListGroup } from "react-bootstrap";
 
 const TypeBar = observer(() => {
   const {mail} = useContext(Context)
-  console.log(Object.values(mail.types))
   return (
     <ListGroup>
       {mail.types.map(type =>

@@ -2,18 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 export default class MailStore {
   constructor() {
-    this._types = [
-      { id: 1, name: "Входящие" },
-      { id: 2, name: "Исходящие" },
-      { id: 3, name: "Спам" },
-      { id: 4, name: "Корзина" },
-    ];
-    this._funcmail = [
-      { id: 1, name: "Удалить" },
-      { id: 2, name: "Создать" },
-      { id: 3, name: "Переслать" },
-      { id: 4, name: "Ответить" },
-    ];
+    this._types = [];
     this._msg = [
       {
         id: 1,
@@ -36,83 +25,6 @@ export default class MailStore {
         msg_body: "ауцпауцйапуцйуйца",
         dateCreate: "31.07.2001",
       },
-      {
-        id: 4,
-        author: "Я",
-        name: "Верни деньги.",
-        msg_body: "Это пример сообщения.",
-        dateCreate: "31.07.2001",
-      },
-      {
-        id: 5,
-        author: "Я",
-        name: "Верни деньги.",
-        msg_body: "ауцпауцйапуцйуйца",
-        dateCreate: "31.07.2001",
-      },
-      {
-        id: 6,
-        author: "Я",
-        name: "Верни деньги.",
-        msg_body: "Это пример сообщения.",
-        dateCreate: "31.07.2001",
-      },
-      {
-        id: 6,
-        author: "Я",
-        name: "Верни деньги.",
-        msg_body: "ауцпауцйапуцйуйца",
-        dateCreate: "31.07.2001",
-      },
-      {
-        id: 6,
-        author: "Я",
-        name: "Верни деньги.",
-        msg_body: "Это пример сообщения.",
-        dateCreate: "31.07.2001",
-      },
-      {
-        id: 6,
-        author: "Я",
-        name: "Верни деньги.",
-        msg_body: "ауцпауцйапуцйуйца",
-        dateCreate: "31.07.2001",
-      },
-      {
-        id: 6,
-        author: "Я",
-        name: "Верни деньги.",
-        msg_body: "ауцпауцйапуцйуйца",
-        dateCreate: "31.07.2001",
-      },
-      {
-        id: 6,
-        author: "Я",
-        name: "Верни деньги.",
-        msg_body: "ауцпауцйапуцйуйца",
-        dateCreate: "31.07.2001",
-      },
-      {
-        id: 6,
-        author: "Я",
-        name: "Верни деньги.",
-        msg_body: "ауцпауцйапуцйуйца",
-        dateCreate: "31.07.2001",
-      },
-      {
-        id: 6,
-        author: "Я",
-        name: "Верни деньги.",
-        msg_body: "ауцпауцйапуцйуйца",
-        dateCreate: "31.07.2001",
-      },
-      {
-        id: 6,
-        author: "Я",
-        name: "Верни деньги.",
-        msg_body: "ауцпауцйапуцйуйца",
-        dateCreate: "31.07.2001",
-      },
     ];
     this._selectedType = {};
     makeAutoObservable(this);
@@ -120,10 +32,6 @@ export default class MailStore {
 
   get types() {
     return this._types;
-  }
-
-  get func() {
-    return this._funcmail;
   }
 
   get msg() {
@@ -138,10 +46,6 @@ export default class MailStore {
     this._types = types;
   }
 
-  setFuncMail(func) {
-    this._funcmail = func;
-  }
-
   setMsg(msg) {
     this._msg = msg;
   }
@@ -150,7 +54,4 @@ export default class MailStore {
     this._selectedType = type;
   }
 
-  setSelectedFunc(func) {
-    this._selectedType = func;
-  }
 }

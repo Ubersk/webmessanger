@@ -9,8 +9,7 @@ const MailList = observer(() => {
   return (
     <Row className="d-flex">
       {mail.msg.map(mail =>
-        <MailItem key={mail.id} mail={mail}/>
-
+        <MailItem key={mail.id_mail} mail={mail}/>
       )}
     </Row>
 
