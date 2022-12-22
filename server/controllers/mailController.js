@@ -1,6 +1,6 @@
 const uuid = require("uuid");
 const path = require("path");
-const { Mail } = require("../models/models");
+const { Mail, User, Mail_fly} = require("../models/models");
 const ApiError = require("../error/ApiError");
 
 class MailController {
@@ -35,11 +35,14 @@ class MailController {
   async hideMsg(req, res) {}
 
   async getAllMsg(req, res) {
-    const mail = await Mail.findAll();
+    const mail = await Mail.findAll({ include: [User, Mail_fly] });
     return res.json(mail);
   }
 
-  async getOneMsg(req, res) {}
+  async getOneMsg(req, res) {
+    const mail = await Mail.findByPk(req.params.id,{ include: [User, Mail_fly] });
+    return res.json(mail);
+  }
 }
 
 module.exports = new MailController();

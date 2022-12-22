@@ -1,4 +1,4 @@
-const {Mail_folder, UserInformation, User} = require("../models/models");
+const {User} = require("../models/models");
 
 class UserInfoController {
   async create(req, res) {}

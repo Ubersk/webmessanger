@@ -3,7 +3,6 @@ import App from "./App";
 import UserStore from "./store/UserStore";
 import MailStore from "./store/MailStore";
 import { createRoot } from "react-dom/client";
-import {fetchAllUsers} from "./http/UserAPI";
 
 export const Context = createContext(null);
 console.log(process.env.REACT_APP_API_URL);

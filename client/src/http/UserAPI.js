@@ -29,6 +29,6 @@ export const fetchAllUsers = async () => {
 };
 
 export const fetchOneUser = async (id) => {
-  const { data } = await $authHost.get("api/userInfo/"+id);
+  const { data } = await $authHost.get("api/userInfo/"+id)
   return data;
 };

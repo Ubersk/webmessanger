@@ -21,6 +21,6 @@ export const fetchMsg = async () => {
 };
 export const fetchOneMsg = async (id) => {
   const { data } = await $authHost.get("api/mail/"+id);
-  return data;
+  return  data;
 };
 

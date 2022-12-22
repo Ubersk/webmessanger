@@ -4,23 +4,23 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import {useParams} from "react-router-dom";
 import {fetchOneMsg} from "../http/mailAPI";
 const MailPage = () => {
-const [mail, setMail] = useState({info:[]})
-  const {id_mail} = useParams()
+const [mail, setMail] = useState(null)
+  console.log(mail)
+  const {id} = useParams()
   useEffect(() =>{
-    fetchOneMsg(id_mail).then(data => setMail(data))
+    fetchOneMsg(id).then(data => {console.log(data); setMail(data)})
 
   },[])
-  return (
+  return (mail &&
     <Container className="mt-3">
       <Col md={8}>
         <Button href="/">Назад</Button>
       <Row>
-        <h2>Тема сообщения: {mail.info.map((info,index)=>
-        <Row key={{id_mail}}></Row>)}</h2>
+        <h2>Тема сообщения: {mail.message_title}</h2>
       </Row>
       </Col>
       <Col md={8}>
-        <h3>Автор: {mail.author}</h3>
+        <h3>Автор: {mail.user.name}</h3>
       </Col>
       <Col md={8} >
         <Card className="mt-3">
