@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
-import { Container, ListGroup, Row } from "react-bootstrap";
+import {  Row } from "react-bootstrap";
 import MailItem from "./MailItem";
 
 const MailList = observer(() => {

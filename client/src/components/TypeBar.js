@@ -5,15 +5,16 @@ import { ListGroup } from "react-bootstrap";
 
 const TypeBar = observer(() => {
   const {mail} = useContext(Context)
+  console.log(Object.values(mail.types))
   return (
     <ListGroup>
       {mail.types.map(type =>
         <ListGroup.Item
           style={{cursor:"pointer"}}
-          active={type.id === mail.selectedType.id}
+          active={type.id_mail_folder === mail.selectedType.id_mail_folder}
           onClick={() => mail.setSelectedType(type)}
-          key={type.id}>
-          {type.name}
+          key={type.id_mail_folder}>
+          {type.name_mail_folder}
         </ListGroup.Item>
         )}
     </ListGroup>

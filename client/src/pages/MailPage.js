@@ -1,7 +1,5 @@
 import React from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import mail from "./Mail";
-import TypeBar from "../components/TypeBar";
 
 
 const MailPage = () => {

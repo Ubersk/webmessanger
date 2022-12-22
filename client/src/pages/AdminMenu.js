@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Card, Container } from "react-bootstrap";
 import {
-  LOGIN_ROUTES,
   MAIL_ROUTES,
   REGISTRATION_ROUTES,
 } from "../utils/consts";

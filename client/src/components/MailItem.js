@@ -1,7 +1,6 @@
 import React from "react";
-import { Card, Col, Image } from "react-bootstrap";
+import { Card, Col} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import MailPage from "../pages/MailPage";
 import { MESSAGE_ROUTES } from "../utils/consts";
 
 const MailItem = ({ mail }) => {
