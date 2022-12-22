@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React, {useContext, useEffect, useState} from "react";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import TypeBar from "../components/TypeBar";
 import FunctionBar from "../components/FunctionBar";
 import MailList from "../components/MailList";
@@ -10,7 +10,6 @@ import {fetchAllUsers, fetchOneUser} from "../http/UserAPI";
 
 const Mail = observer(() => {
   const { mail, user } = useContext(Context);
-
   useEffect(() => {
     fetchTypes().then(data => {
       mail.setTypes(data)})
@@ -32,6 +31,7 @@ const Mail = observer(() => {
           <FunctionBar />
           <MailList />
         </Col>
+
       </Row>
     </Container>
   );

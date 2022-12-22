@@ -31,6 +31,7 @@ class MailController {
   }
 
   async basketMsg(req, res) {}
+async deleteMsg(req, res) {}
 
   async hideMsg(req, res) {}
 

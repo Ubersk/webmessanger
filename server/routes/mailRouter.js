@@ -3,6 +3,7 @@ const router = new Router();
 const authMiddleware = require("../middleware/authMiddleware");
 const mailController = require("../controllers/mailController");
 router.post("/", authMiddleware, mailController.createMsg);
+router.post("/", authMiddleware, mailController.deleteMsg);
 router.get("/", authMiddleware, mailController.getAllMsg);
 router.get("/:id", mailController.getOneMsg);
 

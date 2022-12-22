@@ -1,5 +1,5 @@
 import {
-  ADMIN_ROUTES,
+  ADMIN_ROUTES, CREATE_MSG_ROUTES, CREATEMSG_ROUTES,
   LOGIN_ROUTES,
   MAIL_ROUTES,
   MESSAGE_ROUTES,
@@ -11,6 +11,7 @@ import MailPage from "./pages/MailPage";
 import Mail from "./pages/Mail";
 import Auth from "./pages/Auth";
 import userProfile from "./pages/UserProfile";
+import CreateMsg from "./pages/CreateMsg";
 
 export const publicRoutes = [
   {
@@ -22,6 +23,10 @@ export const authRoutes = [
   {
     path: MESSAGE_ROUTES + "/:id",
     Component: MailPage,
+  },
+  {
+    path: CREATE_MSG_ROUTES,
+    Component: CreateMsg,
   },
   {
     path: ADMIN_ROUTES,
