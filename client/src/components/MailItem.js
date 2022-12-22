@@ -14,7 +14,7 @@ const MailItem = ({ mail}) => {
           <div className="m-lg-1">Автор: {mail.user && mail.user.name}</div>
           <div  className="m-2 d-inline-block text-truncate">Тема: {mail.message_title}</div>
   <div style={{ maxWidth: '150px'}} className="m-2 bg-opacity-75 d-inline-block text-truncate">-{mail.message_body}</div>
-          <div className="d-flex blockquote-footer">{mail.date_create}</div>
+          <div className="d-flex blockquote-footer  ">{mail.date_create}</div>
         </div>
       </Card>
     </Col>

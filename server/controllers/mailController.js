@@ -13,16 +13,14 @@ class MailController {
         mail_folderId,
         userId,
       } = req.body;
-      // FileConstruct      const {img} = req.files;
-      //       let fileName = uuid.v4() + ".jpg";
-      //       img.mv(path.resolve(__dirname, "..", "static", fileName));
+
       const mail = await Mail.create({
         message_title,
         message_body,
         date_create,
         mail_folderId,
         userId,
-        // img: fileName,
+
       });
       return res.json(mail);
     } catch (e) {

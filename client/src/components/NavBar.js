@@ -25,6 +25,7 @@ const NavBar = observer(() => {
 
         {user.isAuth ? (
           <Nav className="ml-auto" style={{ color: "white" }}>
+
             <div>
               <Button
                 className="ms-lg-5 "
