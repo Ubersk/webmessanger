@@ -9,27 +9,39 @@ import { Context } from "../index";
 import {fetchAllUsers, login, registration} from "../http/UserAPI";
 import { createMsg } from "../http/mailAPI";
 import data from "bootstrap/js/src/dom/data";
-
 const CreateMsg = () => {
   const { mail, user } = useContext(Context);
-  const [user_id, setName] = useState("");
+  const [user_receiver, setName] = useState("");
   const [message_title, setTextTitle] = useState("");
   const [message_body, setTextBody] = useState("");
-const mail_folderId =1
+const mail_folderId =2
+  const user_sender = {name: user}
+
   const click = async () => {
-  console.log(user_id, message_title, message_body)
+  console.log(user_receiver, message_title, message_body)
+    console.log(user_sender)
     try {
        const param = {
+
+         user_sender,
          message_title,
          message_body,
          mail_folderId,
-         user_id
+         user_receiver,
        }
       const data = await createMsg(param);
       mail.setMsg(data);
       console.log(data);
 
     } catch (e) {
+
+
+      // setInterval(() => {
+      //   fetchAllUsers().then(data => {
+      //     this._users = data;
+      //     console.log(data)
+      //   })
+      // }, 5000)
       alert(e.response.data.message);
     }
   };
@@ -45,7 +57,7 @@ const mail_folderId =1
           <span className="input-group-text" >Кому:</span>
           <input
                   id="reciever"
-                  value={user_id}
+                  value={user_receiver}
                   onChange={(e) => setName(e.target.value)}
                   type="text"
                   className="form-control"

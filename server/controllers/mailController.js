@@ -1,3 +1,4 @@
+
 const uuid = require("uuid");
 const path = require("path");
 const { Mail, User, Mail_fly} = require("../models/models");
@@ -9,28 +10,26 @@ class MailController {
 
     try {console.log(req.body)
       const {
+        user_sender,
         message_title,
         message_body,
-        date_create,
         mail_folderId,
-        userId,
+        user_receiver,
+        date_create,
+        user_id,
       } = req.body;
 
 
       const mail = await Mail.create({
+        user_sender,
         message_title,
         message_body,
+        user_receiver,
         date_create,
         mail_folderId,
-        userId,
+        user_id,
 
       });
-      const candidate = await User.findOne({ where: { userId } });
-      if (!candidate) {
-        return next(
-          ApiError.badRequest("Пользователь не найден!")
-        );
-      }
       return res.json(mail);
     } catch (e) {
       next(ApiError.badRequest(e.message));
@@ -38,7 +37,9 @@ class MailController {
   }
 
   async basketMsg(req, res) {}
-async deleteMsg(req, res) {}
+async deleteMsg(req, res) {
+
+}
 
   async hideMsg(req, res) {}
 

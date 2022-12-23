@@ -20,7 +20,7 @@ const [mail, setMail] = useState(null)
       </Row>
       </Col>
       <Col md={8}>
-        <h3>Автор: {mail.user.name}</h3>
+        <h3>Автор: {mail.user && mail.user.name}</h3>
       </Col>
       <Col md={8} >
         <Card className="mt-3">
