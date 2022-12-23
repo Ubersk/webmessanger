@@ -6,24 +6,28 @@ import {
 } from "../utils/consts";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../index";
-import { login, registration } from "../http/UserAPI";
+import {fetchAllUsers, login, registration} from "../http/UserAPI";
 import { createMsg } from "../http/mailAPI";
+import data from "bootstrap/js/src/dom/data";
 
 const CreateMsg = () => {
   const { mail, user } = useContext(Context);
-  const [name, setName] = useState("");
+  const [user_id, setName] = useState("");
   const [message_title, setTextTitle] = useState("");
   const [message_body, setTextBody] = useState("");
 const mail_folderId =1
   const click = async () => {
+  console.log(user_id, message_title, message_body)
     try {
-      let data;
-        data = await createMsg( message_title,
-          message_body,
-          mail_folderId,
-          name,);
+       const param = {
+         message_title,
+         message_body,
+         mail_folderId,
+         user_id
+       }
+      const data = await createMsg(param);
       mail.setMsg(data);
-      console.log(mail);
+      console.log(data);
 
     } catch (e) {
       alert(e.response.data.message);
@@ -38,8 +42,10 @@ const mail_folderId =1
 
 
         <div className="input-group mb-3">
-          <span className="input-group-text" id="basic-addon1">@</span>
-          <input  value={name}
+          <span className="input-group-text" >Кому:</span>
+          <input
+                  id="reciever"
+                  value={user_id}
                   onChange={(e) => setName(e.target.value)}
                   type="text"
                   className="form-control"
@@ -49,8 +55,9 @@ const mail_folderId =1
         </div>
 
         <div className="input-group input-group-lg">
-          <span className="input-group-text" id="inputGroup-sizing-lg">Тема</span>
+          <span className="input-group-text">Тема</span>
           <input
+            id="theme"
             value={message_title}
             onChange={(e) => setTextTitle(e.target.value)}
             type="text"
@@ -62,6 +69,7 @@ const mail_folderId =1
         <div className="input-group">
           <span className="input-group-text">Введите сообщение</span>
           <textarea
+            id="msg_body"
             value={message_body}
             onChange={(e) => setTextBody(e.target.value)}
             className="form-control" aria-label="С текстовым полем"></textarea>
@@ -86,14 +94,14 @@ const mail_folderId =1
           Отмена
         </Button>
 </Row>
-        {message_title != "" && <div className="alert alert-success d-flex align-items-center" role="alert">
-          <svg className="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
-          </svg>
-          <div>
-            Пример уведомления об успехе с иконкой
-          </div>
-        </div>}
 
+        {/*{data != null && <div className="alert alert-success d-flex align-items-center" role="alert">*/}
+        {/*  <svg className="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">*/}
+        {/*  </svg>*/}
+        {/*  <div>*/}
+        {/*    Сообщение отправлено*/}
+        {/*  </div>*/}
+        {/*</div>}*/}
       </Card>
 
 

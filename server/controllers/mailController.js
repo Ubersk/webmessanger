@@ -5,7 +5,7 @@ const ApiError = require("../error/ApiError");
 
 class MailController {
   async createMsg(req, res, next) {
-    try {
+    try {console.log(req.body)
       const {
         message_title,
         message_body,
@@ -13,6 +13,7 @@ class MailController {
         mail_folderId,
         userId,
       } = req.body;
+
 
       const mail = await Mail.create({
         message_title,
@@ -22,6 +23,12 @@ class MailController {
         userId,
 
       });
+      const candidate = await User.findOne({ where: { userId } });
+      if (!candidate) {
+        return next(
+          ApiError.badRequest("Пользователь не найден!")
+        );
+      }
       return res.json(mail);
     } catch (e) {
       next(ApiError.badRequest(e.message));
