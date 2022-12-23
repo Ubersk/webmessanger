@@ -5,6 +5,8 @@ const ApiError = require("../error/ApiError");
 
 class MailController {
   async createMsg(req, res, next) {
+
+
     try {console.log(req.body)
       const {
         message_title,
