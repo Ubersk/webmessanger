@@ -1,6 +1,6 @@
 const ApiError = require("../error/ApiError");
 const bcrypt = require("bcrypt");
-const { User } = require("../models/models");
+const { User} = require("../models/models");
 const jwt = require("jsonwebtoken");
 
 const generateJwt = (id, name, isAdmin) => {
@@ -44,6 +44,11 @@ class UserController {
   async check(req, res) {
     const token = generateJwt(req.user.id, req.user.name, req.user.isAdmin);
     return res.json({ token });
+  }
+
+  async getAllUsers(req, res) {
+    const users = await User.findAll();
+    return res.json(users);
   }
 }
 

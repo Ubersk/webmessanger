@@ -24,7 +24,7 @@ export const check = async () => {
   return jwt_decode(data.token);
 };
 export const fetchAllUsers = async () => {
-  const { data } = await $authHost.get("api/userInfo");
+  const { data } = await $authHost.get("api/user/all");
   return data;
 };
 

@@ -5,11 +5,11 @@ import {  Row } from "react-bootstrap";
 import MailItem from "./MailItem";
 
 const MailList = observer(() => {
-  const {mail, user} = useContext(Context)
+  const {mailStore, userStore} = useContext(Context)
   return (
     <Row className="d-flex">
-      {mail.msg.map(mail =>
-        <MailItem key={mail.id_mail} mail={mail} user = {user}/>
+      {mailStore.msg.map (mailStore =>
+        <MailItem key={mailStore.id_mail} mailStore={mailStore} userStore = {userStore} />
       )}
     </Row>
 

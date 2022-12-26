@@ -12,8 +12,8 @@ const root = createRoot(document.getElementById("root"));
 root.render(
   <Context.Provider
     value={{
-      user: new UserStore(),
-      mail: new MailStore(),
+      userStore: new UserStore(),
+      mailStore: new MailStore(),
     }}
   >
     <App />

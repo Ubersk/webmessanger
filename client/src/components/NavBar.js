@@ -10,11 +10,11 @@ import {
 } from "../utils/consts";
 
 const NavBar = observer(() => {
-  const { user } = useContext(Context);
+  const { userStore } = useContext(Context);
   const navigate = useNavigate();
   const logOut = () => {
-    user.setUser({});
-    user.setIsAuth(false);
+    userStore.setUser({});
+    userStore.setIsAuth(false);
     localStorage.setItem("token", {});
   };
 
@@ -23,7 +23,7 @@ const NavBar = observer(() => {
       <Container>
         <Navbar.Brand href="/">Почта</Navbar.Brand>
 
-        {user.isAuth ? (
+        {userStore.isAuth ? (
           <Nav className="ml-auto" style={{ color: "white" }}>
 
             <div>

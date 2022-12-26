@@ -1,20 +1,10 @@
 import { makeAutoObservable } from "mobx";
-import {fetchAllUsers} from "../http/UserAPI";
-
 export default class UserStore {
   constructor() {
     this._isAuth = false;
     this._user = {};
     this._users = [];
     makeAutoObservable(this);
-
-    // setInterval(() => {
-    //   fetchAllUsers().then(data => {
-    //     this._users = data;
-    //     console.log(data)
-    //   })
-    // }, 5000)
-
   }
 
   get isAuth() {

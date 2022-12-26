@@ -1,5 +1,4 @@
 const {Mail_folder} = require("../models/models");
-const ApiError = require("../error/ApiError");
 
 class MailFolderController {
   async createFolderMsg(req, res) {

@@ -6,17 +6,15 @@ import {
 } from "../utils/consts";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../index";
-import {fetchAllUsers, login, registration} from "../http/UserAPI";
 import { createMsg } from "../http/mailAPI";
-import data from "bootstrap/js/src/dom/data";
+import Form from 'react-bootstrap/Form';
 const CreateMsg = () => {
-  const { mail, user } = useContext(Context);
+  const { mailStore, userStore } = useContext(Context);
   const [user_receiver, setName] = useState("");
   const [message_title, setTextTitle] = useState("");
   const [message_body, setTextBody] = useState("");
 const mail_folderId =2
-  const user_sender = {name: user}
-
+  const user_sender = {name: userStore.user}
   const click = async () => {
   console.log(user_receiver, message_title, message_body)
     console.log(user_sender)
@@ -30,18 +28,10 @@ const mail_folderId =2
          user_receiver,
        }
       const data = await createMsg(param);
-      mail.setMsg(data);
+      mailStore.setMsg(data);
       console.log(data);
 
     } catch (e) {
-
-
-      // setInterval(() => {
-      //   fetchAllUsers().then(data => {
-      //     this._users = data;
-      //     console.log(data)
-      //   })
-      // }, 5000)
       alert(e.response.data.message);
     }
   };
@@ -52,18 +42,16 @@ const mail_folderId =2
 
       <Card style={{ width: 900 }}>
 
-
         <div className="input-group mb-3">
           <span className="input-group-text" >Кому:</span>
-          <input
-                  id="reciever"
-                  value={user_receiver}
-                  onChange={(e) => setName(e.target.value)}
-                  type="text"
-                  className="form-control"
-                  placeholder="Имя пользователя"
-                  aria-label="Имя пользователя"
-                  aria-describedby="basic-addon1"/>
+          <Form.Select>
+            {userStore &&
+              userStore.users.map(item =>
+              <option value = {item.id_user}>
+                {item.name}
+              </option>)
+            }
+          </Form.Select>
         </div>
 
         <div className="input-group input-group-lg">
@@ -87,37 +75,25 @@ const mail_folderId =2
             className="form-control" aria-label="С текстовым полем"></textarea>
         </div>
 
-
-
-<Row className={"d-flex justify-content-around"}>
-        <Button
-          style={{maxWidth:200}}
-          className={"m-3"}
-          onClick={click}
-          variant={"outline-success"}
-        >
-          Отправить
-        </Button>
-        <Button
-          style={{maxWidth:200}}
-          className={"m-3"}
-          onClick={() => navigate(MAIL_ROUTES)}
-          variant={"outline-danger"}>
-          Отмена
-        </Button>
-</Row>
-
-        {/*{data != null && <div className="alert alert-success d-flex align-items-center" role="alert">*/}
-        {/*  <svg className="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">*/}
-        {/*  </svg>*/}
-        {/*  <div>*/}
-        {/*    Сообщение отправлено*/}
-        {/*  </div>*/}
-        {/*</div>}*/}
+        <Row className={"d-flex justify-content-around"}>
+          <Button
+            style={{maxWidth:200}}
+            className={"m-3"}
+            onClick={click}
+            variant={"outline-success"}
+          >
+            Отправить
+          </Button>
+          <Button
+            style={{maxWidth:200}}
+            className={"m-3"}
+            onClick={() => navigate(MAIL_ROUTES)}
+            variant={"outline-danger"}>
+            Отмена
+          </Button>
+        </Row>
       </Card>
-
-
-</Container>
+    </Container>
   );
 };
 

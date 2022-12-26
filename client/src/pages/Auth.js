@@ -8,7 +8,7 @@ import { Context } from "../index";
 import { useNavigate } from "react-router-dom";
 
 const Auth = observer(() => {
-  const { user } = useContext(Context);
+  const { userStore } = useContext(Context);
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTES;
   const [name, setName] = useState("");
@@ -23,9 +23,9 @@ const Auth = observer(() => {
       } else {
         data = await registration(name, password);
       }
-      user.setUser(data);
-      user.setIsAuth(true);
-      console.log(user);
+      userStore.setUser(data);
+      userStore.setIsAuth(true);
+      console.log(userStore);
       navigate(MAIL_ROUTES);
     } catch (e) {
       alert(e.response.data.message);

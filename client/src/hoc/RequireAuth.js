@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { Context } from "../index";
 
 const RequireAuth = ({ children }) => {
-  const { user } = useContext(Context);
+  const { userStore } = useContext(Context);
   const location = useLocation();
 
-  if (!user.isAuth) {
+  if (!userStore.isAuth) {
     return <Navigate to="/login" state={{ from: location }} />;
   }
   return children;
