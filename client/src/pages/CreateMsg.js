@@ -13,7 +13,6 @@ const CreateMsg = () => {
   const [user_receiver, setName] = useState("");
   const [message_title, setTextTitle] = useState("");
   const [message_body, setTextBody] = useState("");
-const mail_folderId =2
   const user_sender = {name: userStore.user}
   const click = async () => {
   console.log(user_receiver, message_title, message_body)
@@ -24,7 +23,6 @@ const mail_folderId =2
          user_sender,
          message_title,
          message_body,
-         mail_folderId,
          user_receiver,
        }
       const data = await createMsg(param);

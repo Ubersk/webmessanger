@@ -27,7 +27,7 @@ export default class MailStore {
   setMsg(msg) {
     this._msg = msg;
   }
-
+  
   setSelectedType(type) {
     this._selectedType = type;
   }
