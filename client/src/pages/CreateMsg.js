@@ -29,6 +29,7 @@ const mail_folderId =2
        }
       const data = await createMsg(param);
       mailStore.setMsg(data);
+      navigate(MAIL_ROUTES);
       console.log(data);
 
     } catch (e) {

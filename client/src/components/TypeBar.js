@@ -21,18 +21,3 @@ const TypeBar = observer(() => {
 });
 
 export default TypeBar;
-
-
-
-
-
-
-
-
-// const TypeBar = observer(() => {
-//   return (
-//     <div>
-//
-//     </div>
-//   );
-// });
