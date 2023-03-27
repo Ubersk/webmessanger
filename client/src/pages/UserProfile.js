@@ -1,10 +1,17 @@
 import React from "react";
-
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 const UserProfile = () => {
   return (
-    <div>
-      Страница пользователя
-    </div>
+    <Container  className="d-flex justify-content-center align-items-center" style={{ height: window.innerHeight - 200 }}>
+      <Card >
+        <div className="input-group mb-3">
+          <Button>
+            Настройки
+          </Button>
+        </div>
+      </Card>
+    </Container>
+   
   );
 };
 
