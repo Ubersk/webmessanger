@@ -1,4 +1,4 @@
-const { Mail, User, Mail_fly} = require("../models/models");
+const { Mail, User, Poluchateli} = require("../models/models");
 const ApiError = require("../error/ApiError");
 
 class MailController {
@@ -15,7 +15,6 @@ class MailController {
         date_create,
       } = req.body;
 
-
       const mail = await Mail.create({
         user_sender,
         message_title,
@@ -28,16 +27,17 @@ class MailController {
     } catch (e) {
       next(ApiError.badRequest(e.message));
     }
+    
   }
 async deleteMsg(req, res) {}
 
   async getAllMsg(req, res) {
-    const mail = await Mail.findAll({ include: [User, Mail_fly] });
+    const mail = await Mail.findAll({ include: [User, Poluchateli] });
     return res.json(mail);
   }
 
   async getOneMsg(req, res) {
-    const mail = await Mail.findByPk(req.params.id,{ include: [User, Mail_fly] });
+    const mail = await Mail.findByPk(req.params.id,{ include: [User, Poluchateli] });
     return res.json(mail);
   }
 }

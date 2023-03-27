@@ -1,70 +1,71 @@
 const sequelize = require("../db");
-const { DataTypes } = require("sequelize");
+const {DataTypes} = require("sequelize")
 
-const User = sequelize.define("user", {
-  id_user: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  name: { type: DataTypes.STRING },
-  password: { type: DataTypes.STRING },
-  isAdmin: { type: DataTypes.BOOLEAN },
-});
-const UserInformation = sequelize.define("user_info", {
-  id_user_info: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  img: { type: DataTypes.STRING },
-  email: { type: DataTypes.STRING },
-  description: { type: DataTypes.STRING },
-  phone: { type: DataTypes.STRING },
-  computer_number: { type: DataTypes.STRING },
-  position: { type: DataTypes.STRING },
+const User = sequelize.define("user",
+{
+    id_user: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING},
+    password: {type: DataTypes.STRING},
+    photo: {type: DataTypes.STRING},
+    email: {type: DataTypes.STRING},
+    description: {type: DataTypes.STRING},
+    phone_number: {type: DataTypes.STRING},
+    computer_number: {type: DataTypes.STRING},
 });
 
-const Mail = sequelize.define("mail", {
-  id_mail: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  message_title: { type: DataTypes.STRING(155) },
-  message_body: { type: DataTypes.TEXT },
-  date_create: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
-  user_id: { type: DataTypes.INTEGER },
-});
-const Mail_fly = sequelize.define("mail_fly", {
-  id_mail_fly: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  date_recive: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
-  date_read: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
-});
-const Mail_folder = sequelize.define("mail_folder", {
-  id_mail_folder: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  name_mail_folder: { type: DataTypes.STRING },
+const Department = sequelize.define("department",
+{
+    id_department: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    deparment_name: {type: DataTypes.STRING},
 });
 
-User.hasOne(UserInformation);
-UserInformation.belongsTo(User);
+const Position = sequelize.define("position",
+{
+    id_position: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    position_name: {type: DataTypes.STRING},
+});
 
-User.hasMany(Mail);
-Mail.belongsTo(User);
+const Message = sequelize.define("message",
+{
+    id_message: {type: DataTypes.INTEGER, primaryKey:true, autoIncrement: true},
+    message_title: {type: DataTypes.STRING(155)},
+    message_body: {type: DataTypes.TEXT},
+    files_body: {type: DataTypes.STRING},
+    user_creator: {type: DataTypes.INTEGER},
+    msg_type: {type: DataTypes.BOOLEAN},
+    date_create: {type: DataTypes.DATE, defaultValue: DataTypes.NOW},
+});
 
-Mail.hasMany(Mail_fly);
-Mail_fly.belongsTo(Mail);
 
-Mail_fly.hasMany(User);
-User.belongsTo(Mail_fly);
+const Poluchateli = sequelize.define("poluchateli",
+{
+    id_poluchateli: {type: DataTypes.INTEGER, primaryKey:true, autoIncrement: true},
+    date_poluchenia: {type: DataTypes.DATE},
+    date_prochtenia: {type: DataTypes.DATE},
+    date_delete: {type: DataTypes.DATE},
+    date_accept: {type: DataTypes.DATE},
+    date_unaccept: {type: DataTypes.DATE},
+});
 
-Mail_folder.hasMany(Mail_fly);
-Mail_fly.belongsTo(Mail_folder);
+User.hasOne(Department);
+Department.belongsTo(User);
+
+User.hasOne(Position);
+Position.belongsTo(User);
+
+User.hasMany(Message);
+Message.belongsTo(User);
+
+Message.hasMany(Poluchateli);
+Poluchateli.belongsTo(Message);
+
+User.hasMany(Poluchateli);
+Poluchateli.belongsTo(User);
 
 module.exports = {
-  User,
-  Mail,
-  UserInformation,
-  Mail_folder,
-  Mail_fly,
+    User,
+    Department,
+    Position,
+    Message,
+    Poluchateli,
 };
