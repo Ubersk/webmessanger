@@ -6,6 +6,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import {fetchMsg, fetchTypes} from "../http/mailAPI";
 import {fetchAllUsers, fetchOneUser} from "../http/UserAPI";
+import TypeBar from "../components/TypeBar";
 
 const Mail = observer(() => {
   const { mailStore, userStore } = useContext(Context);
@@ -24,7 +25,9 @@ const Mail = observer(() => {
   return (
     <Container className="mt-3">
       <Row className="mt-3">
-
+        <Col md={3}>
+        <TypeBar/>
+        </Col>
         <Col>
           <FunctionBar />
           <MailList />
