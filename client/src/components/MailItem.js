@@ -7,11 +7,11 @@ const MailItem = ({ mailStore}) => {
 
   const navigate = useNavigate();
   return (mailStore &&
-    <Col
-      onClick={() => navigate(MESSAGE_ROUTES + "/" + mailStore.id_mail)}
+    <Col className="col-12 ms-2"
+      onClick={() => navigate(MESSAGE_ROUTES + "/" + mailStore.id_message)}
     >
-      <Card className="mt-3 " style={{ minHeight: 50, cursor: "pointer" }} border={"info"}>
-        <div className="d-flex justify-content-between   mt-3 ">
+      <Card className="mt-3 form-control " style={{ minHeight: 50, cursor: "pointer" }} border={""}>
+        <div className="">
           <div className="m-lg-1">Автор: {UserStore.user && mailStore.user.name}</div>
           <div  className="m-2 d-inline-block text-truncate">Тема: {mailStore.message_title}</div>
   <div style={{ maxWidth: '150px'}} className="m-2 bg-opacity-75 d-inline-block text-truncate">-{mailStore.message_body}</div>

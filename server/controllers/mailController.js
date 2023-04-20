@@ -10,7 +10,6 @@ class MessageController {
         user_sender,
         message_title,
         message_body,
-        mail_folderId,
         user_receiver,
         date_create,
       } = req.body;
@@ -21,7 +20,6 @@ class MessageController {
         message_body,
         user_receiver,
         date_create,
-        mail_folderId
       });
       return res.json(mail);
     } catch (e) {

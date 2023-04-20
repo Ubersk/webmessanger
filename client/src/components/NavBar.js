@@ -24,11 +24,11 @@ const NavBar = observer(() => {
         <Navbar.Brand href="/">Почта</Navbar.Brand>
 
         {userStore.isAuth ? (
-          <Nav className="ml-auto" style={{ color: "white" }}>
+          <Nav className="ml-3" style={{ color: "white" }}>
 
             <div>
               <Button
-                className="ms-lg-5 "
+                className=""
                 variant={"outline-info"}
                 onClick={() => navigate(ADMIN_ROUTES)}
               >

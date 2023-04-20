@@ -8,28 +8,22 @@ const FunctionBar = observer(() => {
   const navigate = useNavigate();
   return (
 
-  <ButtonToolbar  aria-label="3">
-    <Form
-      className="d-flex"
-      style={{ maxHeight: '200px'}}
-      >
-      <Form.Control
-        type="Search"
-        placeholder="Поиск"
-        aria-label="Search"
-        style={{minWidth:`300px`}}
-      />
-      <Button   variant="outline-success">Поиск</Button>
-
-        <Button  onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</Button>
-        <Button >Ответить</Button>
-        <Button >Переслать</Button>
-        <Button >Удалить</Button>
-
-      </Form>
-
-
-  </ButtonToolbar>
+  <div class="container">
+    <div class="row">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Введите для поиска" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+            <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Поиск</button>
+            </div>
+        </div>
+          <div>
+            <button type="button" class="btn btn-outline-success btn-sm" onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</button>
+            <button type="button" class="btn btn-outline-primary btn-sm ms-1" onClick={() => navigate()}>Ответить</button>
+            <button type="button" class="btn btn-outline-primary btn-sm ms-1" onClick={() => navigate()}>Переслать</button>
+            <button type="button" class="btn btn-outline-danger btn-sm ms-1" onClick={() => navigate()}>Удалить</button>
+          </div>
+    </div>
+  </div>
   );
 });
 
