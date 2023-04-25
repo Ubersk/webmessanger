@@ -7,7 +7,7 @@ class MessageController {
 
     try {console.log(req.body)
       const {
-        user_sender,
+        user_creator,
         message_title,
         message_body,
         user_receiver,
@@ -15,7 +15,7 @@ class MessageController {
       } = req.body;
 
       const mail = await Message.create({
-        user_sender,
+        user_creator,
         message_title,
         message_body,
         user_receiver,
