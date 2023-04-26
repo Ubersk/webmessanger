@@ -1,33 +1,36 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useReducer, useState } from "react";
 import { Button, Card, Container, Row } from "react-bootstrap";
-import {
-  MAIL_ROUTES,
-  REGISTRATION_ROUTES,
-} from "../utils/consts";
+import { MAIL_ROUTES} from "../utils/consts";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../index";
 import { createMsg } from "../http/mailAPI";
 import Form from 'react-bootstrap/Form';
+
+
 const CreateMsg = () => {
   const { mailStore, userStore } = useContext(Context);
   const [user_receiver, setName] = useState("");
   const [message_title, setTextTitle] = useState("");
   const [message_body, setTextBody] = useState("");
-  const user_sender = {name: userStore.user}
+  const [files_body, setFilesBody] = useState("");
+  const user_creator = userStore.user.id_user;
+
   const click = async () => {
+  console.log(userStore.user.name);
+  console.log("Отправитель: ", user_creator)
   console.log(user_receiver, message_title, message_body)
-    console.log(user_sender)
     try {
        const param = {
 
-         user_sender,
+         user_creator,
          message_title,
          message_body,
+         files_body,
          user_receiver,
        }
       const data = await createMsg(param);
       mailStore.setMsg(data);
-      navigate(MAIL_ROUTES);
+      // navigate(MAIL_ROUTES);
       console.log(data);
 
     } catch (e) {
@@ -43,13 +46,16 @@ const CreateMsg = () => {
 
         <div className="input-group mb-3">
           <span className="input-group-text" >Кому:</span>
+          <input
+          value={user_receiver}
+          onChange={(e) => setName(e.target.value)}/>
           <Form.Select>
-            {userStore &&
+            value = {userStore &&
               userStore.users.map(item =>
               <option value = {item.id_user}>
                 {item.name}
-              </option>)
-            }
+              </option>)}
+            onChange={(e) => setName(e.target.value)}
           </Form.Select>
         </div>
 
@@ -61,8 +67,7 @@ const CreateMsg = () => {
             onChange={(e) => setTextTitle(e.target.value)}
             type="text"
             className="form-control"
-            aria-label="Пример размера поля ввода"
-            aria-describedby="inputGroup-sizing-lg"/>
+            />
         </div>
 
         <div className="input-group">
@@ -71,7 +76,16 @@ const CreateMsg = () => {
             id="msg_body"
             value={message_body}
             onChange={(e) => setTextBody(e.target.value)}
-            className="form-control" aria-label="С текстовым полем"></textarea>
+            className="form-control"></textarea>
+        </div>
+
+        <div class="d-flex mt-3">
+          <span className="input-group-text">Прикрепить файл</span>
+          <input
+          value={files_body}
+          onChange={(e) => setFilesBody(e.target.value)} 
+          class="m-1" 
+          type="file"></input>
         </div>
 
         <Row className={"d-flex justify-content-around"}>

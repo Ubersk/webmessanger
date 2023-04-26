@@ -7,7 +7,7 @@ import { RequireAuth } from "../hoc/RequireAuth";
 
 const AppRouter = () => {
   const { userStore } = useContext(Context);
-  console.log(userStore);
+  // console.log(userStore);
   return (
     <Routes>
       {publicRoutes.map(({ path, Component }) => (

@@ -19,6 +19,7 @@ const Mail = observer(() => {
     fetchAllUsers().then(data => {
       userStore.setUsers(data);
     })
+    console.log(userStore.user.name)
 
   }, [])
 

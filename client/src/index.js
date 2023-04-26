@@ -4,8 +4,7 @@ import UserStore from "./store/UserStore";
 import MailStore from "./store/MailStore";
 import { createRoot } from "react-dom/client";
 
-export const Context = createContext(null);
-console.log(process.env.REACT_APP_API_URL);
+export const Context = createContext();
 
 
 const root = createRoot(document.getElementById("root"));

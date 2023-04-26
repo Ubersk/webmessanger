@@ -25,7 +25,7 @@ const Auth = observer(() => {
       }
       userStore.setUser(data);
       userStore.setIsAuth(true);
-      console.log(userStore);
+      console.log(data);
       navigate(MAIL_ROUTES);
     } catch (e) {
       alert(e.response.data.message);
