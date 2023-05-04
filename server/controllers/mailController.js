@@ -6,19 +6,21 @@ class MessageController {
 
 
     try {console.log(req.body)
-      const {
-        user_sender,
+      const { 
         message_title,
         message_body,
-        user_receiver,
+        files_body,
+        user_creator,
+        msg_type,
         date_create,
       } = req.body;
 
       const mail = await Message.create({
-        user_sender,
         message_title,
         message_body,
-        user_receiver,
+        files_body,
+        user_creator,
+        msg_type,
         date_create,
       });
       return res.json(mail);

@@ -10,14 +10,16 @@ import { Spinner } from "react-bootstrap";
 const App = observer(() => {
   const { userStore } = useContext(Context);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
+  React.useEffect(() => {
     check()
       .then((data) => {
-        userStore.setUser(true);
+        userStore.setUser(data);
         userStore.setIsAuth(true);
+
       })
       .finally(() => setLoading(false));
-    console.log(userStore.isAuth);
+    console.log(userStore.isAuth)
+    
   }, []);
 
   if (loading) {

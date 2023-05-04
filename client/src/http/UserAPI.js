@@ -5,7 +5,7 @@ export const registration = async (name, password) => {
   const { data } = await $host.post("api/user/registration", {
     name,
     password,
-    isAdmin: false,
+    is_admin: false,
   });
   localStorage.setItem("token", data.token);
   return jwt_decode(data.token);
