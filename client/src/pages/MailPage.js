@@ -6,6 +6,8 @@ import {fetchOneMsg} from "../http/mailAPI";
 import { Context } from "../index";
 import { useNavigate } from "react-router-dom";
 import { MAIL_ROUTES} from "../utils/consts";
+import { CREATE_MSG_ROUTES} from "../utils/consts";
+
 
 const MailPage = () => {
 const { mailStore, userStore } = useContext(Context);
@@ -23,7 +25,7 @@ const [mail, setMail] = useState(null)
       console.log(data); 
       const users = Object.values(userStore.users);
       const UserCompare = users.find(user => user.id_user === data.user_creator);
-      const user_creator_name = UserCompare ? UserCompare.name : 'Неизвестный отравитель';
+      const user_creator_name = UserCompare ? UserCompare.name : 'Неизвестный отправитель';
       data.user_creator = user_creator_name;
       console.log(user_creator_name);
 
@@ -33,30 +35,42 @@ const [mail, setMail] = useState(null)
 
   const navigate = useNavigate();
   return (mail &&
-    <Container className="mt-3">
-      <Col md={8}>
-        <Button 
-            onClick={() => navigate(MAIL_ROUTES)}
-            >Назад</Button>
-      
-        <Col md={8}>
-        <h5>Автор: {mail.user_creator}</h5>
-        </Col>
-        <Col md={8}>
-        <h5>Кому: {mail.user_reciever && mail.user.name}</h5>
-        </Col>
-      
-       <Row>
-        <h2>Тема сообщения: {mail.message_title}</h2>
+    <Container className=" mt-5 d-flex justify-content-center align-items-center">
+     <Col md={12}>
+     
+     <div>
+        <div
+        className="mx-3 d-flex justify-content-center">
+        <Button className="mt-3 me-4 mb-3" onClick={() => navigate(MAIL_ROUTES)}>Назад</Button>
+          <Col>
+        <h4 className="border-bottom">Автор: {mail.user_creator}</h4>
+        <h4 className="border-bottom">Кому: {"Мне"}</h4>
+        <h6>Тип сообщения: {"Личное"}</h6>
+          </Col>
+        </div>
+      </div>
+      <div className=" d-flex justify-content-start border border-primary">
+      <Button className="m-1 border border-secondary" variant={"success"} onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</Button>
+      <Button className="m-1 border border-secondary" variant={"primary"}>Ответить</Button>
+      <Button className="m-1 border border-secondary" variant={"primary"}>Переслать</Button>
+      <Button className="m-1 border border-secondary" variant={"danger"}>Удалить</Button>
+      <Button className="m-1 border border-secondary text-white" variant={"warning"}>Создать событие</Button>
+      </div>
+      <Card className="border border-secondary">
+      <Col>
+       <Row className="d-flex p-2 mx-2 border-bottom">
+        <h4 >Тема сообщения: {mail.message_title}</h4>
        </Row>
        </Col>
-       <Col md={8} >
-        <Card className="mt-3">
-          <h5>{mail.message_body}</h5>
+       <Col>
+        <Card className="m-3 mt-3 border border-secondary">
+          <h6 className="m-2">{mail.message_body}</h6>
          </Card>
-         <Button className="m-3" variant={"secondary"}>Ответить</Button>
-         <Button className="m-3" variant={"secondary"}>Переслать</Button>
       </Col>
+        
+      </Card>
+     </Col>
+      
 
     </Container>
   );

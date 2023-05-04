@@ -7,19 +7,19 @@ const FunctionBar = observer(() => {
   const navigate = useNavigate();
   return (
 
-  <div class="container">
-    <div class="row">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Введите для поиска" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-            <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Поиск</button>
+  <div className="container">
+    <div className="row">
+        <div className="input-group mb-3">
+          <input type="text" className="form-control" placeholder="Введите для поиска" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+            <div className="input-group-append">
+            <button className="btn btn-outline-secondary" type="button">Поиск</button>
             </div>
         </div>
           <div>
-            <button type="button" class="btn btn-outline-success btn-sm" onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</button>
-            <button type="button" class="btn btn-outline-primary btn-sm ms-1" onClick={() => navigate()}>Ответить</button>
-            <button type="button" class="btn btn-outline-primary btn-sm ms-1" onClick={() => navigate()}>Переслать</button>
-            <button type="button" class="btn btn-outline-danger btn-sm ms-1" onClick={() => navigate()}>Удалить</button>
+            <button type="button" className="btn btn-outline-success btn-sm" onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</button>
+            <button type="button" className="btn btn-outline-primary btn-sm ms-1" onClick={() => navigate()}>Ответить</button>
+            <button type="button" className="btn btn-outline-primary btn-sm ms-1" onClick={() => navigate()}>Переслать</button>
+            <button type="button" className="btn btn-outline-danger btn-sm ms-1" onClick={() => navigate()}>Удалить</button>
           </div>
     </div>
   </div>
