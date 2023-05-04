@@ -21,7 +21,7 @@ const NavBar = observer(() => {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="/">Почта</Navbar.Brand>
+        <Navbar.Brand>Почта</Navbar.Brand>
 
         {userStore.isAuth ? (
           <Nav className="ml-3" style={{ color: "white" }}>

@@ -3,13 +3,13 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import {fetchAllUsers, fetchOneUser} from "../http/UserAPI";
 import {useParams} from "react-router-dom";
 import {fetchOneMsg} from "../http/mailAPI";
-import UserStore from "../store/UserStore";
 import { Context } from "../index";
+import { useNavigate } from "react-router-dom";
+import { MAIL_ROUTES} from "../utils/consts";
 
 const MailPage = () => {
 const { mailStore, userStore } = useContext(Context);
 const [mail, setMail] = useState(null)
-  console.log(mail)
   const {id} = useParams()
 
   useEffect(() =>{
@@ -19,19 +19,25 @@ const [mail, setMail] = useState(null)
     })
 
     fetchOneMsg(id).then(data => {
-      console.log(data); 
       setMail(data);
-      const UserCompare = userStore.users.filter(item => item.id_user == data.user_creator);
-      console.log(UserCompare, userStore.users);
+      console.log(data); 
+      const users = Object.values(userStore.users);
+      const UserCompare = users.find(user => user.id_user === data.user_creator);
+      const user_creator_name = UserCompare ? UserCompare.name : 'Неизвестный отравитель';
+      data.user_creator = user_creator_name;
+      console.log(user_creator_name);
+
       
     })
   },[])
 
-
+  const navigate = useNavigate();
   return (mail &&
     <Container className="mt-3">
       <Col md={8}>
-        <Button href="/">Назад</Button>
+        <Button 
+            onClick={() => navigate(MAIL_ROUTES)}
+            >Назад</Button>
       
         <Col md={8}>
         <h5>Автор: {mail.user_creator}</h5>
