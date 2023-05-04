@@ -43,7 +43,7 @@ const [mail, setMail] = useState(null)
         <h5>Автор: {mail.user_creator}</h5>
         </Col>
         <Col md={8}>
-        <h3>Кому: {mail.user_reciever && mail.user.name}</h3>
+        <h5>Кому: {mail.user_reciever && mail.user.name}</h5>
         </Col>
       
        <Row>
