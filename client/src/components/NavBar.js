@@ -28,7 +28,7 @@ const NavBar = observer(() => {
 
             <div>
               <Button
-                className=""
+                
                 variant={"outline-info"}
                 onClick={() => navigate(ADMIN_ROUTES)}
               >
