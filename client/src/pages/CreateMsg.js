@@ -4,7 +4,8 @@ import { MAIL_ROUTES} from "../utils/consts";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../index";
 import { createMsg } from "../http/mailAPI";
-import Form from 'react-bootstrap/Form';
+
+
 const CreateMsg = () => {
   const { mailStore, userStore } = useContext(Context);
   const [userIdUser, setName] = useState("");
@@ -15,9 +16,6 @@ const CreateMsg = () => {
   
   //Метод нажатия на кнопку "Отправить"
   const click = async () => {
-  console.log("Отправитель:", userStore.user.name)
-  console.log(userIdUser, message_title, message_body)
-
   //Вложение создателя сообщения в переменную name а не id
   const user_creator = userStore.user.id;
   const users = Object.values(userStore.users);
@@ -39,8 +37,7 @@ const CreateMsg = () => {
        }
       const data = await createMsg(param);
       mailStore.setMsg(data);
-      alert("Сообщение отправлено!");
-      console.log(data);
+      navigate("");
     } catch (e) {
       
       alert("Ошибка!");

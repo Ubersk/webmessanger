@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import {fetchAllUsers, fetchOneUser} from "../http/UserAPI";
+import {fetchAllUsers} from "../http/UserAPI";
 import {useParams} from "react-router-dom";
 import {fetchOneMsg} from "../http/mailAPI";
 import { Context } from "../index";
@@ -10,15 +10,12 @@ import { CREATE_MSG_ROUTES} from "../utils/consts";
 
 
 const MailPage = () => {
-const { mailStore, userStore } = useContext(Context);
+const {userStore} = useContext(Context);
 const [mail, setMail] = useState(null)
 const {id} = useParams()
-
+const navigate = useNavigate();
 
   useEffect(() =>{
-    fetchAllUsers().then(users => {
-      userStore.setUsers(users);
-    })
     fetchOneMsg(id).then(data => {
       setMail(data);
       console.log(data); 
@@ -26,11 +23,9 @@ const {id} = useParams()
       const UserCompare = users.find(user => user.id_user === data.user_creator);
       const user_creator_name = UserCompare ? UserCompare.name : 'Неизвестный отправитель';
       data.user_creator = user_creator_name;
-      console.log(user_creator_name);
     })
   },[])
 
-  const navigate = useNavigate();
   return (mail &&
     <Container className=" mt-5 d-flex justify-content-center">
      <Col>
