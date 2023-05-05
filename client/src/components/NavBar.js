@@ -7,6 +7,7 @@ import {
   ADMIN_ROUTES,
   LOGIN_ROUTES,
   USERPROFILE_ROUTES,
+  MAIL_ROUTES,
 } from "../utils/consts";
 
 const NavBar = observer(() => {
@@ -21,7 +22,7 @@ const NavBar = observer(() => {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand>Почта</Navbar.Brand>
+        <Navbar.Brand href= "/" >Почта</Navbar.Brand>
 
         {userStore.isAuth ? (
           <Nav className="ml-3" style={{ color: "white" }}>

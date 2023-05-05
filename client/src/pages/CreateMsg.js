@@ -37,7 +37,7 @@ const CreateMsg = () => {
        }
       const data = await createMsg(param);
       mailStore.setMsg(data);
-      navigate("");
+      alert="Сообщение успешно отправлено!";
     } catch (e) {
       
       alert("Ошибка!");
@@ -91,7 +91,7 @@ const CreateMsg = () => {
           <Button
             style={{maxWidth:200}}
             className={"m-3"}
-            onClick={() => navigate(MAIL_ROUTES)}
+            href="/"
             variant={"outline-danger"}>
             Отмена
           </Button>

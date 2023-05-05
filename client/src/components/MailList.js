@@ -6,7 +6,7 @@ import MailItem from "./MailItem";
 
 const MailList = observer(() => {
   const {mailStore, userStore} = useContext(Context)
-  console.log("Пользователь:", userStore.user.name,"Авторизован:", userStore.isAuth)
+  // console.log("Пользователь:", userStore.user.name,"Авторизован:", userStore.isAuth)
   return (
     <Row className="d-flex flex-column-reverse">
       {mailStore.msg.map (mailStore =>
