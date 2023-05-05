@@ -29,7 +29,7 @@ const Mail = observer(() => {
         <Col md={3}>
         <TypeBar/>
         </Col>
-        <Col>
+        <Col md={8}>
           <FunctionBar />
           <MailList />
         </Col>

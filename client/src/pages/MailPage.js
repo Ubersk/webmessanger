@@ -12,14 +12,13 @@ import { CREATE_MSG_ROUTES} from "../utils/consts";
 const MailPage = () => {
 const { mailStore, userStore } = useContext(Context);
 const [mail, setMail] = useState(null)
-  const {id} = useParams()
+const {id} = useParams()
+
 
   useEffect(() =>{
-
     fetchAllUsers().then(users => {
       userStore.setUsers(users);
     })
-
     fetchOneMsg(id).then(data => {
       setMail(data);
       console.log(data); 
@@ -28,16 +27,13 @@ const [mail, setMail] = useState(null)
       const user_creator_name = UserCompare ? UserCompare.name : 'Неизвестный отправитель';
       data.user_creator = user_creator_name;
       console.log(user_creator_name);
-
-      
     })
   },[])
 
   const navigate = useNavigate();
   return (mail &&
-    <Container className=" mt-5 d-flex justify-content-center align-items-center">
-     <Col md={12}>
-     
+    <Container className=" mt-5 d-flex justify-content-center">
+     <Col>
      <div>
         <div
         className="mx-3 d-flex justify-content-center">
@@ -67,11 +63,8 @@ const [mail, setMail] = useState(null)
           <h6 className="m-2">{mail.message_body}</h6>
          </Card>
       </Col>
-        
       </Card>
      </Col>
-      
-
     </Container>
   );
 };
