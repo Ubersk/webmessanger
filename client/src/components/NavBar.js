@@ -17,6 +17,7 @@ const NavBar = observer(() => {
     userStore.setUser({});
     userStore.setIsAuth(false);
     localStorage.setItem("token", {});
+    navigate(LOGIN_ROUTES);
   };
 
   return (

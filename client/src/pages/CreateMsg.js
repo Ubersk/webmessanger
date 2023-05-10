@@ -16,7 +16,6 @@ const CreateMsg = () => {
   
   //Метод нажатия на кнопку "Отправить"
   const click = async () => {
-    navigate(MAIL_ROUTES);
 
   //Вложение создателя сообщения в переменную name а не id
   const user_creator = userStore.user.id;
@@ -42,6 +41,8 @@ const CreateMsg = () => {
       }
      const data = await createMsg(param);
      alert("Сообщение успешно отправлено!");
+    navigate(MAIL_ROUTES);
+
      console.log(data);
    } catch (e) {
      alert("Ошибка!");
