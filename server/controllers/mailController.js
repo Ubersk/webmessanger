@@ -11,6 +11,7 @@ class MessageController {
         message_body,
         files_body,
         user_creator,
+        userIdUser,
         msg_type,
         date_create,
       } = req.body;
@@ -20,6 +21,7 @@ class MessageController {
         message_body,
         files_body,
         user_creator,
+        userIdUser,
         msg_type,
         date_create,
       });

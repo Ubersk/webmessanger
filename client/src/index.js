@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 
 export const Context = createContext();
 
-console.log(Context);
+// console.log(Context);
 const root = createRoot(document.getElementById("root"));
 root.render(
   <Context.Provider

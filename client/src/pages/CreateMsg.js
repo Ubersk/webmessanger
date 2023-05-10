@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Card, Container, Row } from "react-bootstrap";
-import { MAIL_ROUTES} from "../utils/consts";
+import { MAIL_ROUTES, MESSAGE_ROUTES} from "../utils/consts";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../index";
 import { createMsg } from "../http/mailAPI";
@@ -8,7 +8,7 @@ import { createMsg } from "../http/mailAPI";
 
 const CreateMsg = () => {
   const { mailStore, userStore } = useContext(Context);
-  const [userIdUser, setName] = useState("");
+  const [user_reciever, setName] = useState("");
   const [message_title, setTextTitle] = useState("");
   const [message_body, setTextBody] = useState("");
   const [files_body, setFilesBody] = useState("");
@@ -16,40 +16,46 @@ const CreateMsg = () => {
   
   //Метод нажатия на кнопку "Отправить"
   const click = async () => {
+    navigate(MAIL_ROUTES);
+
   //Вложение создателя сообщения в переменную name а не id
   const user_creator = userStore.user.id;
   const users = Object.values(userStore.users);
-  console.log(users);
   const selecteduser = users.find(user => user.id_user === user_creator)
   const user_creator_name = selecteduser ? selecteduser.name : 'Неизвестный отправитель';
-
-  //Обработка принятия user_reciever(пользователя получателя)
-
-
-
-    try {
-       const param = {
-         user_creator,
-         message_title,
-         message_body,
-         files_body,
-         userIdUser,
-       }
-      const data = await createMsg(param);
-      mailStore.setMsg(data);
-      navigate("");
-    } catch (e) {
-      
-      alert("Ошибка!");
-    }
+ 
+  //Обработка принятия userIdUser(пользователя получателя)
+  const user_reciever_name = user_reciever;
+  const poluser = users.find(user => user.name === user_reciever_name); // ищем пользователя по id_user
+  console.log(poluser)
+  console.log(users)
+  if (poluser != undefined){
+  const userIdUser = poluser.id_user;
+    try 
+    {
+      const param = {
+        user_creator,
+        userIdUser,
+        message_title,
+        message_body,
+        files_body,
+      }
+     const data = await createMsg(param);
+     alert("Сообщение успешно отправлено!");
+     console.log(data);
+   } catch (e) {
+     alert("Ошибка!");
+   }
+  }
+  else {alert("Пользователь не найден")}
   };
   return ( 
-    <Container  className="d-flex justify-content-center align-items-center" style={{ height: window.innerHeight - 200 }}>
+    <Container  className="d-flex justify-content-center align-items-center mt-4" style={{}}>
       <Card style={{ width: 1200 }}>
         <div className="input-group mb-3">
           <span className="input-group-text" >Кому:</span>
           <input
-          value={userIdUser}
+          value={user_reciever}
           onChange={(e) => setName(e.target.value)}
           className="form-control"/>
         </div>
@@ -66,11 +72,16 @@ const CreateMsg = () => {
         <div className="input-group">
           <span className="input-group-text">Введите сообщение</span>
           <textarea
+            autoFocus
+            spellCheck = "true"
+            wrap="hard"
+            style={{height:300, resize:""}}
             id="msg_body"
             value={message_body}
             onChange={(e) => setTextBody(e.target.value)}
-            className="form-control"></textarea>
+            className="form-control resize-none;"></textarea>
         </div>
+
         <div className="d-flex mt-3">
           <span className="input-group-text">Прикрепить файл</span>
           <input
@@ -91,9 +102,9 @@ const CreateMsg = () => {
           <Button
             style={{maxWidth:200}}
             className={"m-3"}
-            onClick={() => navigate(MAIL_ROUTES)}
+            href="/"
             variant={"outline-danger"}>
-            Отмена
+            Закрыть
           </Button>
         </Row>
       </Card>

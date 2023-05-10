@@ -18,7 +18,7 @@ const App = observer(() => {
 
       })
       .finally(() => setLoading(false));
-    console.log(userStore.isAuth)
+    // console.log(userStore.isAuth)
     
   }, []);
 
