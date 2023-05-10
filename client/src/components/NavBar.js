@@ -20,6 +20,17 @@ const NavBar = observer(() => {
     navigate(LOGIN_ROUTES);
   };
 
+  function AdminMenu(){
+    console.log("Сработало");
+    console.log(userStore.user.is_admin);
+    if (userStore.user.is_admin === true)
+    {
+    navigate(ADMIN_ROUTES)
+    }
+    else{alert("Вы не администратор!")}
+  }
+  
+
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -27,16 +38,15 @@ const NavBar = observer(() => {
 
         {userStore.isAuth ? (
           <Nav className="ml-3" style={{ color: "white" }}>
-
+            {userStore.user.is_admin ?
+            (
             <div>
-              <Button
-                
-                variant={"outline-info"}
-                onClick={() => navigate(ADMIN_ROUTES)}
-              >
-                Админ
-              </Button>
+            <Button variant={"outline-info"} onClick={() => AdminMenu()}>Админ</Button>
             </div>
+            ):(
+           <div/>   
+            )}
+            
 
             {/* <Button
               className="ms-lg-5 "
