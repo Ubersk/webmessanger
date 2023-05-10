@@ -28,7 +28,7 @@ const navigate = useNavigate();
 
   return (mail &&
     <Container className=" mt-5 d-flex justify-content-center">
-     <Col>
+     <Col >
      <div>
         <div
         className="mx-3 d-flex justify-content-center">
@@ -40,7 +40,7 @@ const navigate = useNavigate();
           </Col>
         </div>
       </div>
-      <div className=" d-flex justify-content-start border border-primary">
+      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-6">
       <Button className="m-1 border border-secondary" variant={"success"} onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</Button>
       <Button className="m-1 border border-secondary" variant={"primary"}>Ответить</Button>
       <Button className="m-1 border border-secondary" variant={"primary"}>Переслать</Button>

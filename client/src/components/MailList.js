@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,  useEffect} from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import {  Row } from "react-bootstrap";
@@ -13,6 +13,7 @@ const MailList = observer(() => {
         <MailItem key={mailStore.id_message} mailStore={mailStore} userStore = {userStore} />
       )}
     </Row>
+
   );
 });
 
