@@ -57,15 +57,12 @@ const Auth = observer(() => {
             {isLogin ? (
               <div>
                 <Button
-                  className="mt-3 col-md-8"
+                  className="mt-3 col-md-12"
                   style={{ minWidth: 200 }}
                   variant={"outline-primary"}
                   onClick={click}
                 >
                   Войти
-                </Button>
-                <Button className="mt-3 col-md-4" variant="link">
-                  <NavLink to={LOGIN_ROUTES}>Забыли пароль?</NavLink>
                 </Button>
               </div>
             ) : (

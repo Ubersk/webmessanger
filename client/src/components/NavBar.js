@@ -37,14 +37,14 @@ const NavBar = observer(() => {
               </Button>
             </div>
 
-            <Button
+            {/* <Button
               className="ms-lg-5 "
               variant={"outline-info"}
               onClick={() => navigate(USERPROFILE_ROUTES)}
             >
               {" "}
               Профиль
-            </Button>
+            </Button> */}
             <Button
               variant={"outline-danger"}
               className="ms-lg-2"
