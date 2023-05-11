@@ -1,5 +1,6 @@
 import {
   ADMIN_ROUTES, CREATE_MSG_ROUTES,
+  DELETEUSERS_ROUTES,
   LOGIN_ROUTES,
   MAIL_ROUTES,
   MESSAGE_ROUTES,
@@ -12,6 +13,7 @@ import Mail from "./pages/Mail";
 import Auth from "./pages/Auth";
 import userProfile from "./pages/UserProfile";
 import CreateMsg from "./pages/CreateMsg";
+import DeleteUsers from "./pages/DeleteUsers";
 
 export const publicRoutes = [
   {
@@ -44,5 +46,9 @@ export const authRoutes = [
   {
     path: MAIL_ROUTES,
     Component: Mail,
+  },
+  {
+    path: DELETEUSERS_ROUTES,
+    Component: DeleteUsers,
   },
 ];

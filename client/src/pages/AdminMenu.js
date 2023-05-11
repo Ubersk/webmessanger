@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card, Container } from "react-bootstrap";
 import {
+  DELETEUSERS_ROUTES,
   MAIL_ROUTES,
   REGISTRATION_ROUTES,
 } from "../utils/consts";
@@ -22,7 +23,7 @@ const AdminMenu = () => {
         >
           Добавить пользователя
         </Button>
-        <Button variant={"outline-danger"}>Удалить пользователя</Button>
+        <Button variant={"outline-danger"} onClick={() => navigate(DELETEUSERS_ROUTES)}>Удалить пользователя</Button>
       </Card>
       <Card className="mt-5">
         <Button variant={"outline-warning"}>Логи сообщений</Button>

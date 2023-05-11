@@ -20,15 +20,15 @@ const NavBar = observer(() => {
     navigate(LOGIN_ROUTES);
   };
 
-  function AdminMenu(){
-    console.log("Сработало");
-    console.log(userStore.user.is_admin);
-    if (userStore.user.is_admin === true)
-    {
-    navigate(ADMIN_ROUTES)
-    }
-    else{alert("Вы не администратор!")}
-  }
+  // function AdminMenu(){
+  //   console.log("Сработало");
+  //   console.log(userStore.user.is_admin);
+  //   if (userStore.user.is_admin === true)
+  //   {
+  //   navigate(ADMIN_ROUTES)
+  //   }
+  //   else{alert("Вы не администратор!")}
+  // }
   
 
   return (
@@ -41,7 +41,7 @@ const NavBar = observer(() => {
             {userStore.user.is_admin ?
             (
             <div>
-            <Button variant={"outline-info"} onClick={() => AdminMenu()}>Админ</Button>
+            <Button variant={"outline-info"} onClick={() => navigate(ADMIN_ROUTES)}>Админ</Button>
             </div>
             ):(
            <div/>   
