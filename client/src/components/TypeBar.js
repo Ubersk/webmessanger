@@ -8,7 +8,7 @@ const TypeBar = observer(() => {
     <div id="typebar" className="container">
       <div className="col">
         <div className="d-flex flex-column">
-          <button type="button" className="btn btn-outline-dark btn-lg ms-1">Все сообщения</button>
+          <button type="button" className="btn btn-outline-dark btn-lg ms-1" onClick={NewMess()}>Все сообщения</button>
           <button type="button" className="btn btn-outline-primary ms-1 mt-4">Новые</button>
           <button type="button" className="btn btn-outline-primary ms-1 mt-1">Отправленные</button>
           <button type="button" className="btn btn-outline-primary ms-1 mt-1">Полученные</button>
