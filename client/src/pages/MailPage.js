@@ -57,7 +57,6 @@ function ForwardMsg() {
 
    
     })
-    
   },[])
 
   return (mail &&
@@ -79,7 +78,6 @@ function ForwardMsg() {
       <Button className="m-1 border border-secondary" variant={"primary"} onClick={() => AnswerOnMsg()}>Ответить</Button>
       <Button className="m-1 border border-secondary" variant={"primary"} onClick={() => ForwardMsg()}>Переслать</Button>
       <Button className="m-1 border border-secondary" variant={"danger"}>Удалить</Button>
-      <Button className="m-1 border border-secondary text-white" variant={"warning"}>Создать событие</Button>
       </div>
       <Card className="border border-secondary">
       <Col>
