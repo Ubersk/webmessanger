@@ -7,11 +7,16 @@ import { createMsg } from "../http/mailAPI";
 
 const CreateMsg = () => {
   const { mailStore, userStore } = useContext(Context);
-  const [user_reciever, setName] = useState("");
-  const [message_title, setTextTitle] = useState("");
-  const [message_body, setTextBody] = useState("");
+  const [user_reciever, setName] = useState(mailStore.answer !== {} ? mailStore.answer.user : "");
+  const [message_title, setTextTitle] = useState(mailStore.answer !== {} ? mailStore.answer.title : "");
+  const [message_body, setTextBody] = useState(mailStore.answer !== {} ? mailStore.answer.text : "");
   const [files_body, setFilesBody] = useState("");
   const navigate = useNavigate();
+
+  if (mailStore.answer !== {}) {
+    mailStore.setAnswer({});
+  }
+
   //Метод нажатия на кнопку "Отправить"
   const click = async () => {
 
@@ -28,7 +33,7 @@ const CreateMsg = () => {
   const poluser = users.find(user => user.name === user_reciever_name);
   console.log(poluser)
   console.log(users)
-  if (poluser != undefined){
+  if (poluser !== undefined){
   const userIdUser = poluser.id_user;
     try 
     {

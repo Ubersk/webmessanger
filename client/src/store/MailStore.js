@@ -5,9 +5,13 @@ export default class MailStore {
     this._types = [];
     this._msg = [];
     this._selectedType = {};
+    this._answer = {};
     makeAutoObservable(this);
   }
 
+  get answer(){
+    return this._answer;
+  }
   get types() {
     return this._types;
   }
@@ -18,6 +22,10 @@ export default class MailStore {
 
   get selectedType() {
     return this._selectedType;
+  }
+
+  setAnswer(answer){
+    this._answer = answer;
   }
 
   setTypes(types) {

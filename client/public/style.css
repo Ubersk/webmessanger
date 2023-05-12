@@ -1,1 +1,6 @@
 .column-reverse { display: flex; flex-direction: column-reverse; }
+
+
+h1{
+    font-size: 20vw;
+}

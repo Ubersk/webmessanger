@@ -51,13 +51,11 @@ class UserController {
     const users = await User.findAll();
     return res.json(users);
   }
-// Хотел создать функцию взятия создателя сообщения из клиентской части и форматирования из id в name
-  // async getUserCreator(req, res){
-  //   const userCreator = req.user_creator;
-  //   const user_creator_instance = await User.findByPk(userCreator);
-  //   const user_creator_name = user_creator_instance.name;
-  //   return res(user_creator_name);
-  // }
+
+  async delete(req, res) {
+    const user = await User.findOne();
+    return res.json(user);
+  }
 }
 
 

@@ -32,3 +32,7 @@ export const fetchOneUser = async (id) => {
   const { data } = await $authHost.get("api/userInfo/"+id)
   return data;
 };
+
+export const deleteOneUser = async (id) => {
+  const { data } = await $authHost.delete("api/user/delete")
+}

@@ -2,6 +2,7 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 import {useNavigate} from "react-router-dom";
 import { CREATE_MSG_ROUTES} from "../utils/consts";
+import { Button } from "react-bootstrap";
 
 const FunctionBar = observer(() => {
   const navigate = useNavigate();
@@ -16,10 +17,9 @@ const FunctionBar = observer(() => {
             </div>
         </div>
           <div>
-            <button type="button" className="btn btn-outline-success btn-sm" onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</button>
-            <button type="button" className="btn btn-outline-primary btn-sm ms-1" onClick={() => navigate()}>Ответить</button>
-            <button type="button" className="btn btn-outline-primary btn-sm ms-1" onClick={() => navigate()}>Переслать</button>
-            <button type="button" className="btn btn-outline-danger btn-sm ms-1" onClick={() => navigate()}>Удалить</button>
+            <button type="button" className="btn btn-success btn-sm" onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</button>
+            <button className="m-1 btn btn-warning text-white btn-sm">Создать событие</button>
+
           </div>
     </div>
   </div>

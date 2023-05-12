@@ -35,6 +35,7 @@ const NavBar = observer(() => {
     <Navbar bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href= "/" >Почта</Navbar.Brand>
+        <Navbar.Brand style={{}} className="d-none d-lg-block lead" href= "/" >{userStore.user.name}</Navbar.Brand>
 
         {userStore.isAuth ? (
           <Nav className="ml-3" style={{ color: "white" }}>
