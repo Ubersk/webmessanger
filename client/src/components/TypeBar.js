@@ -4,6 +4,31 @@ import { Context } from "../index";
 
 const TypeBar = observer(() => {
   const {mailStore} = useContext(Context)
+
+function AllMess(){
+
+}
+
+
+function NewMess(){
+  
+}
+
+
+function SendMess(){
+  
+}
+
+
+function TakeMess(){
+  
+}
+
+
+function DelMess(){
+  
+}
+
   return (
     <div id="typebar" className="container">
       <div className="col">
