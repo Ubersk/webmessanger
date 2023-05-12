@@ -8,11 +8,15 @@ const MailList = observer(() => {
   const {mailStore, userStore} = useContext(Context)
   const bool = new Boolean([false]);
   // console.log("Пользователь:", userStore.user.name,"Авторизован:", userStore.isAuth)
+  const idUserAuth = userStore.user.id;
+  console.log(idUserAuth);
+  let msgs = mailStore.msg.filter(item => item.userIdUser  === idUserAuth);
+  console.log(msgs);
   
   return (
 
     <Row className="d-flex flex-column-reverse">
-      {mailStore.msg.map (mailStore =>
+      {msgs.map (mailStore =>
         <MailItem key={mailStore.id_message} mailStore={mailStore} userStore = {userStore} />
       )}
     </Row>
