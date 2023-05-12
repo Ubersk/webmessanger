@@ -7,23 +7,33 @@ import { Context } from "../index";
 import { useNavigate } from "react-router-dom";
 import { MAIL_ROUTES} from "../utils/consts";
 import { CREATE_MSG_ROUTES} from "../utils/consts";
+import MailStore from "../store/MailStore";
 
 
 const MailPage = () => {
-const {userStore} = useContext(Context);
+const {userStore, mailStore} = useContext(Context);
 const [mail, setMail] = useState(null)
 const {id} = useParams()
 const navigate = useNavigate();
 
-function AnswerOnMsg()
-      {
-        // navigate(CREATE_MSG_ROUTES);
-        const AnswerTitleMsg = "Ответ на тему: " + document.getElementById('tema').innerText.substr(16, 100);
-        const TakeAnswerTitleMsg = AnswerTitleMsg;
-        const AnswerUserReciever = document.getElementById('reciever').innerText.substr(6,100);
-        const TakeAnswerUserReciever = AnswerUserReciever;
-        console.log(TakeAnswerTitleMsg, TakeAnswerUserReciever);
-      }
+function AnswerOnMsg() {
+  const title = "Ответ на тему: " + mail.message_title;
+  const user = mail.user_creator;
+  const text = "\n>>писал " +mail.user_creator+": "+ mail.message_body;
+  mailStore.setAnswer({title, user, text})
+  console.log(mailStore.answer);
+  navigate(CREATE_MSG_ROUTES);
+}
+
+function ForwardMsg() {
+  const title = "Переслано от: " + mail.user_creator+" Тема: " + mail.message_title
+  const user = "";
+  const text = "\n>>пишет: " +mail.user_creator+" "+ mail.message_body;
+  mailStore.setAnswer({title, user, text})
+  console.log(mailStore.answer);
+  navigate(CREATE_MSG_ROUTES);  
+}
+
   useEffect(() =>{
     fetchOneMsg(id).then(data => {
       setMail(data);
@@ -49,7 +59,7 @@ function AnswerOnMsg()
         className="mx-3 d-flex justify-content-center">
         <Button className="mt-3 me-4 mb-3" onClick={() => navigate(MAIL_ROUTES)}>Назад</Button>
           <Col>
-        <h4 className="border-bottom">Автор: {mail.user_creator}</h4>
+        <h4 id="author" className="border-bottom">Автор: {mail.user_creator}</h4>
         <h4 id="reciever" className="border-bottom">Кому: {mail.userIdUser}</h4>
         <h6>Тип сообщения: {"Личное"}</h6>
           </Col>
@@ -58,7 +68,7 @@ function AnswerOnMsg()
       <div className="col-lg-12 col-md-12 col-sm-12 col-xs-6">
       <Button className="m-1 border border-secondary" variant={"success"} onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</Button>
       <Button className="m-1 border border-secondary" variant={"primary"} onClick={() => AnswerOnMsg()}>Ответить</Button>
-      <Button className="m-1 border border-secondary" variant={"primary"}>Переслать</Button>
+      <Button className="m-1 border border-secondary" variant={"primary"} onClick={() => ForwardMsg()}>Переслать</Button>
       <Button className="m-1 border border-secondary" variant={"danger"}>Удалить</Button>
       <Button className="m-1 border border-secondary text-white" variant={"warning"}>Создать событие</Button>
       </div>
@@ -70,7 +80,14 @@ function AnswerOnMsg()
        </Col>
        <Col>
         <Card className="m-3 mt-3 border border-secondary">
-          <h6 className="m-2">{mail.message_body}</h6>
+        <textarea
+        disabled
+            autoFocus
+            spellCheck = "true"
+            wrap="hard"
+            style={{height:300, resize:""}}
+            id="msg_body"
+            className="form-control resize-none;">{mail.message_body}</textarea>
          </Card>
       </Col>
       </Card>
