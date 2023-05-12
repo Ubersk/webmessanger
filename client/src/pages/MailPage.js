@@ -16,6 +16,8 @@ const [mail, setMail] = useState(null)
 const {id} = useParams()
 const navigate = useNavigate();
 
+
+
 function AnswerOnMsg() {
   const title = "Ответ на тему: " + mail.message_title;
   const user = mail.user_creator;
@@ -35,9 +37,12 @@ function ForwardMsg() {
 }
 
   useEffect(() =>{
+
     fetchOneMsg(id).then(data => {
       setMail(data);
       console.log(data); 
+
+
       //Обработка автора сообщения
       const users = Object.values(userStore.users);
       const UserCompare = users.find(user => user.id_user === data.user_creator);
@@ -48,7 +53,11 @@ function ForwardMsg() {
       const UserReciever = users.find(user => user.id_user === data.userIdUser);
       const user_reciever_name = UserReciever ? UserReciever.name : 'Неизвестный получатель';
       data.userIdUser = user_reciever_name; 
+      
+
+   
     })
+    
   },[])
 
   return (mail &&

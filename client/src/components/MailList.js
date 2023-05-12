@@ -11,10 +11,6 @@ const MailList = observer(() => {
   const idUserAuth = userStore.user.id;
   console.log(idUserAuth);
   let msgs = mailStore.msg.filter(item => item.userIdUser  === idUserAuth);
-
-  // if () {
-  //   msgs = msgs.filter(item => item.user_creator === 3);
-  // }
   console.log(msgs);
   
   return (
