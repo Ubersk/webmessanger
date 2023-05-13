@@ -1,10 +1,9 @@
-import React, { useContext,  useEffect} from "react";
+import React, { useContext} from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import {  Row } from "react-bootstrap";
 import MailItem from "./MailItem";
-
-
+import { MailFolder } from "./TypeBar";
 const MailList = observer(() => {
   const {mailStore, userStore} = useContext(Context)
   const idUserAuth = userStore.user.id;
@@ -23,8 +22,11 @@ const MailList = observer(() => {
     msgs = mailStore.msg.filter(item => item.userIdUser === idUserAuth || item.user_creator === idUserAuth);
   }
 //Реализация папок сообщений
-let folder = mailStore.types;
-switch (folder) {
+let typefolder = MailFolder();
+console.log(typefolder);
+let idfolder = 0;
+console.log(idfolder);
+switch (idfolder) {
   case 1: //all
    msgs = mailStore.msg.filter(item => item.userIdUser === idUserAuth || item.user_creator === idUserAuth);
     break;
@@ -39,8 +41,10 @@ switch (folder) {
   break;
 }
   return (
+    
     <Row className="d-flex flex-column-reverse">
       {msgs.map (mailStore =>
+      
         <MailItem key={mailStore.id_message} mailStore={mailStore} userStore = {userStore} />
       )}
     </Row>

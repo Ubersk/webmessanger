@@ -2,15 +2,18 @@ import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 
-const TypeBar = observer(() => {
-  const {mailStore} = useContext(Context)
 
-  
-  function MailFolder(value){
-let folder = value;
-console.log(folder);
-mailStore.types = folder;
-  }
+
+export function MailFolder(value){
+  let folder = value;
+  console.log(folder);
+  return folder
+}
+
+
+const TypeBar = observer(() => {
+  const {mailStore, userStore} = useContext(Context)
+
   return (
     <div id="typebar" className="container">
       <div className="col">
