@@ -47,8 +47,7 @@ const CreateMsg = () => {
      const data = await createMsg(param);
      alert("Сообщение успешно отправлено!");
     navigate(MAIL_ROUTES);
-
-     console.log(data);
+     console.log(data, userStore.user);
    } catch (e) {
      alert("Ошибка!");
    }

@@ -13,9 +13,6 @@ const Mail = observer(() => {
   useEffect(() => {
     fetchMsg().then(data => {
       mailStore.setMsg(data)})
-    // fetchOneUser().then(data =>{
-    //   userStore.setUser(data)
-    // } )
     fetchAllUsers().then(data => {
       userStore.setUsers(data);
     })
