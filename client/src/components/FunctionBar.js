@@ -1,11 +1,13 @@
-import React from "react";
 import { observer } from "mobx-react-lite";
 import {useNavigate} from "react-router-dom";
 import { CREATE_MSG_ROUTES, MAIL_ROUTES} from "../utils/consts";
-import { Button } from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Context } from "../index";
+
 
 const FunctionBar = observer(() => {
   const navigate = useNavigate();
+  const { mailStore, userStore } = useContext(Context);
 
   function EventWindow (){
   const result = prompt();
@@ -15,14 +17,29 @@ const FunctionBar = observer(() => {
     navigate (CREATE_MSG_ROUTES);
     navigate (MAIL_ROUTES);
   }
-  return (
+  const [search_text, setSearch] = useState("")
 
+  function Search (){
+    console.log(search_text);
+    mailStore.setSearch(search_text);
+  }
+ 
+
+  return (
   <div className="container">
     <div className="row">
         <div className="input-group mb-3">
-          <input type="text" className="form-control" placeholder="Введите для поиска" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+          <input 
+          type="text" 
+          className="form-control" 
+          placeholder="Введите для поиска"
+          value={search_text}
+          onChange={(e) => setSearch(e.target.value)}/>
             <div className="input-group-append">
-            <button className="btn btn-outline-secondary" type="button">Поиск</button>
+            <button 
+            className="btn btn-outline-secondary" 
+            type="button"
+            onClick={() => Search()}>Поиск</button>
             </div>
         </div>
           <div>

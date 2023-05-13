@@ -6,9 +6,13 @@ export default class MailStore {
     this._msg = [];
     this._selectedType = {};
     this._answer = {};
+    this._search=[];
     makeAutoObservable(this);
   }
 
+  get search(){
+    return this._search;
+  }
   get answer(){
     return this._answer;
   }
@@ -24,6 +28,9 @@ export default class MailStore {
     return this._selectedType;
   }
 
+  setSearch(search){
+    this._search = search;
+  }
   setAnswer(answer){
     this._answer = answer;
   }
