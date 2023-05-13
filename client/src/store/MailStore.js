@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 export default class MailStore {
   constructor() {
-    this._types = [];
+    this._types = {};
     this._msg = [];
     this._selectedType = {};
     this._answer = {};
