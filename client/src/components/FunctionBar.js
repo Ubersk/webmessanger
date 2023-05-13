@@ -18,10 +18,12 @@ const FunctionBar = observer(() => {
     navigate (MAIL_ROUTES);
   }
   const [search_text, setSearch] = useState("")
+  mailStore.setSearch(search_text);
 
   function Search (){
-    console.log(search_text);
+    mailStore.setSearch({});
     mailStore.setSearch(search_text);
+
   }
  
 

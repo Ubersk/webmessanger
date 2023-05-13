@@ -4,31 +4,27 @@ import { Context } from "../index";
 import {  Row } from "react-bootstrap";
 import MailItem from "./MailItem";
 
+
+
 const MailList = observer(() => {
   const {mailStore, userStore} = useContext(Context)
-  // console.log("Пользователь:", userStore.user.name,"Авторизован:", userStore.isAuth)
   const idUserAuth = userStore.user.id;
-  console.log(idUserAuth);
   let msgs = mailStore.msg.filter(item => item.userIdUser === idUserAuth || item.user_creator === idUserAuth);
-  
+  let filter = mailStore.search;
   console.log(msgs);
-  
-  if (mailStore.search !==[]){
-  msgs = mailStore.msg.filter(item => item.message_title == mailStore.search || item.message_body == mailStore.search);
-  mailStore.setSearch([]);
+  if (filter !== "") {
+    msgs = msgs.filter(item => item.message_body.includes(filter) || item.message_title.includes(filter));
+    console.log(filter);
+    console.log(msgs);
+  } else {
+    msgs = mailStore.msg.filter(item => item.userIdUser === idUserAuth || item.user_creator === idUserAuth);
   }
-  else{
-  }
-
   return (
-
     <Row className="d-flex flex-column-reverse">
       {msgs.map (mailStore =>
         <MailItem key={mailStore.id_message} mailStore={mailStore} userStore = {userStore} />
       )}
     </Row>
-
   );
 });
-
 export default MailList;

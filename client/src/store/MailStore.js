@@ -6,7 +6,7 @@ export default class MailStore {
     this._msg = [];
     this._selectedType = {};
     this._answer = {};
-    this._search=[];
+    this._search={};
     makeAutoObservable(this);
   }
 

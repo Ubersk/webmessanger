@@ -7,19 +7,26 @@ const TypeBar = observer(() => {
   const idUserAuth = userStore.user.id;
 
   function AllMess(){
-    // let msgs = mailStore.msg.filter(item =>idUserAuth === item.userIdUser || item.user_creator);
+    let msgs = mailStore.msg.filter(item => item.userIdUser === idUserAuth || item.user_creator === idUserAuth);
 
   }
   function NewMess(){
   
   }
   function SendMess(){
+    let msgs = mailStore.msg.filter(item => item.user_creator === idUserAuth);
+
   
   }
   function TakeMess(){
+    let msgs = mailStore.msg.filter(item => item.userIdUser === idUserAuth);
+
   
   }
   function DelMess(){
+    let msgs = mailStore.msg.filter(item => item.msg_type === 1);
+
+
   }
 
   return (
