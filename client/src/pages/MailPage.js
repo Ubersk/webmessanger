@@ -38,10 +38,19 @@ function ForwardMsg() {
 
   useEffect(() =>{
 
+   
+
     fetchOneMsg(id).then(data => {
       setMail(data);
+      
       console.log(data); 
 
+      const idUserAuth = userStore.user.id;
+      if (data.userIdUser !== idUserAuth && data.user_creator !== idUserAuth) {
+        alert('У вас нет доступа к этой странице');
+        navigate(MAIL_ROUTES);
+      console.log(idUserAuth)
+      }
 
       //Обработка автора сообщения
       const users = Object.values(userStore.users);
@@ -94,7 +103,8 @@ function ForwardMsg() {
             wrap="hard"
             style={{height:300, resize:""}}
             id="msg_body"
-            className="form-control resize-none;">{mail.message_body}</textarea>
+            className="form-control resize-none;"
+            value={mail.message_body}></textarea>
          </Card>
       </Col>
       </Card>

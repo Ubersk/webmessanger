@@ -10,7 +10,7 @@ const MailList = observer(() => {
   // console.log("Пользователь:", userStore.user.name,"Авторизован:", userStore.isAuth)
   const idUserAuth = userStore.user.id;
   console.log(idUserAuth);
-  let msgs = mailStore.msg.filter(item => item.userIdUser  === idUserAuth);
+  let msgs = mailStore.msg.filter(item => item.userIdUser === idUserAuth || item.user_creator === idUserAuth);
   console.log(msgs);
   
   return (

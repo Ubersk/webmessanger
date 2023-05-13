@@ -10,6 +10,11 @@ const FunctionBar = observer(() => {
   function EventWindow (){
   const result = prompt();
   }
+
+  function Refresh (){
+    navigate (CREATE_MSG_ROUTES);
+    navigate (MAIL_ROUTES);
+  }
   return (
 
   <div className="container">
@@ -23,7 +28,7 @@ const FunctionBar = observer(() => {
           <div>
             <button type="button" className="btn btn-success btn-sm" onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</button>
             <button className="m-1 btn btn-warning text-white btn-sm" onClick={() => EventWindow()}>Глобальное сообщение</button>
-            <button className="m-1 btn btn-primary text-white btn-sm" onClick={() => navigate(MAIL_ROUTES)}>Обновить</button>
+            <button className="m-1 btn btn-primary text-white btn-sm" onClick={() => Refresh()}>Обновить</button>
 
           </div>
     </div>
