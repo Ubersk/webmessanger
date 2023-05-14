@@ -17,7 +17,6 @@ const {id} = useParams()
 const navigate = useNavigate();
 
 
-
 function AnswerOnMsg() {
   const title = "Ответ на тему: " + mail.message_title;
   const user = mail.user_creator;
@@ -35,16 +34,23 @@ function ForwardMsg() {
   console.log(mailStore.answer);
   navigate(CREATE_MSG_ROUTES);  
 }
+function DeleteMsg(){
+  alert("В разработке...");
+  mail.msg_type = 1
+  setMail(mail);
+  console.log(mail);
+}
+
+
 
   useEffect(() =>{
 
    
 
     fetchOneMsg(id).then(data => {
-      setMail(data);
-      
-      console.log(data); 
 
+      setMail(data);
+      console.log(data); 
       const idUserAuth = userStore.user.id;
       if (data.userIdUser !== idUserAuth && data.user_creator !== idUserAuth) {
         alert('У вас нет доступа к этой странице');
@@ -61,13 +67,11 @@ function ForwardMsg() {
       //Обработка получателя сообщения
       const UserReciever = users.find(user => user.id_user === data.userIdUser);
       const user_reciever_name = UserReciever ? UserReciever.name : 'Неизвестный получатель';
-      data.userIdUser = user_reciever_name; 
-      
-
-   
+      data.userIdUser = user_reciever_name;    
     })
+    
   },[])
-
+ 
   return (mail &&
     <Container className=" mt-5 d-flex justify-content-center">
      <Col >
@@ -86,7 +90,7 @@ function ForwardMsg() {
       <Button className="m-1 border border-secondary" variant={"success"} onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</Button>
       <Button className="m-1 border border-secondary" variant={"primary"} onClick={() => AnswerOnMsg()}>Ответить</Button>
       <Button className="m-1 border border-secondary" variant={"primary"} onClick={() => ForwardMsg()}>Переслать</Button>
-      <Button className="m-1 border border-secondary" variant={"danger"}>Удалить</Button>
+      <Button className="m-1 border border-secondary" variant={"danger"} onClick={() => DeleteMsg()}>Удалить</Button>
       </div>
       <Card className="border border-secondary">
       <Col>
