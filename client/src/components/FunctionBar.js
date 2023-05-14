@@ -46,7 +46,7 @@ const FunctionBar = observer(() => {
         </div>
           <div>
             <button type="button" className="btn btn-success btn-sm" onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</button>
-            <button className="m-1 btn btn-warning text-white btn-sm" onClick={() => EventWindow()}>Глобальное сообщение</button>
+            {/* <button className="m-1 btn btn-warning text-white btn-sm" onClick={() => EventWindow()}>Глобальное сообщение</button> */}
             <button className="m-1 btn btn-primary text-white btn-sm" onClick={() => Refresh()}>Обновить</button>
 
           </div>
