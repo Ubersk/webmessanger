@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import {  Row } from "react-bootstrap";
 import MailItem from "./MailItem";
-import { MailFolder } from "./TypeBar";
+import { types } from './MailStore';
 const MailList = observer(() => {
   const {mailStore, userStore} = useContext(Context)
   const idUserAuth = userStore.user.id;
@@ -22,8 +22,9 @@ const MailList = observer(() => {
     msgs = mailStore.msg.filter(item => item.userIdUser === idUserAuth || item.user_creator === idUserAuth);
   }
 //Реализация папок сообщений
-let typefolder = MailFolder();
-console.log(typefolder);
+
+let typefolder = 0;
+console.log(types);
 let idfolder = 0;
 console.log(idfolder);
 switch (idfolder) {

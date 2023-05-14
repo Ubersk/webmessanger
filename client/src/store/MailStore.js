@@ -2,17 +2,15 @@ import { makeAutoObservable } from "mobx";
 
 export default class MailStore {
   constructor() {
-    this._filter = {};
-    this._types = [];
+    this._types = {};
     this._msg = [];
     this._selectedType = {};
     this._answer = {};
     this._search={};
     makeAutoObservable(this);
+    
   }
-  get filter(){
-    return this._filter;
-  }
+
   get search(){
     return this._search;
   }
@@ -31,9 +29,6 @@ export default class MailStore {
     return this._selectedType;
   }
 
-  setFilter(filter){
-    this._filter = filter;
-  }
   setSearch(search){
     this._search = search;
   }
@@ -44,6 +39,9 @@ export default class MailStore {
   setTypes(types) {
     this._types = types;
   }
+  updateTypes(newTypes) {
+    this._types = { ...this._types, ...newTypes };
+  }
 
   setMsg(msg) {
     this._msg = msg;
@@ -52,5 +50,6 @@ export default class MailStore {
   setSelectedType(type) {
     this._selectedType = type;
   }
-
 }
+export const mailStore = new MailStore();
+export const types = mailStore.types;
