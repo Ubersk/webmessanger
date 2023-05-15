@@ -1,13 +1,11 @@
 import React, {useEffect, useState, useContext} from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import {fetchAllUsers} from "../http/UserAPI";
 import {useParams} from "react-router-dom";
 import {fetchOneMsg} from "../http/mailAPI";
 import { Context } from "../index";
 import { useNavigate } from "react-router-dom";
 import { MAIL_ROUTES} from "../utils/consts";
 import { CREATE_MSG_ROUTES} from "../utils/consts";
-import MailStore from "../store/MailStore";
 
 
 const MailPage = () => {
@@ -34,11 +32,9 @@ function ForwardMsg() {
   console.log(mailStore.answer);
   navigate(CREATE_MSG_ROUTES);  
 }
-function DeleteMsg(){
-  alert("В разработке...");
-  mail.msg_type = 1
-  setMail(mail);
-  console.log(mail);
+function DeleteMsg(value){
+  value.msg_type = 1
+  console.log(value);
 }
 
 
@@ -50,7 +46,6 @@ function DeleteMsg(){
     fetchOneMsg(id).then(data => {
 
       setMail(data);
-      console.log(data); 
       const idUserAuth = userStore.user.id;
       if (data.userIdUser !== idUserAuth && data.user_creator !== idUserAuth) {
         alert('У вас нет доступа к этой странице');
@@ -68,6 +63,7 @@ function DeleteMsg(){
       const UserReciever = users.find(user => user.id_user === data.userIdUser);
       const user_reciever_name = UserReciever ? UserReciever.name : 'Неизвестный получатель';
       data.userIdUser = user_reciever_name;    
+      DeleteMsg(data);
     })
     
   },[])
