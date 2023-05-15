@@ -44,7 +44,6 @@ function DeleteMsg(value){
    
 
     fetchOneMsg(id).then(data => {
-
       setMail(data);
       const idUserAuth = userStore.user.id;
       if (data.userIdUser !== idUserAuth && data.user_creator !== idUserAuth) {
