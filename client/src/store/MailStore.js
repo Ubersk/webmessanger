@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 export default class MailStore {
   constructor() {
-    this._types = {};
+    this._folder = 1;
     this._msg = [];
     this._selectedType = {};
     this._answer = {};
@@ -17,8 +17,8 @@ export default class MailStore {
   get answer(){
     return this._answer;
   }
-  get types() {
-    return this._types;
+  get folder() {
+    return this._folder;
   }
 
   get msg() {
@@ -36,13 +36,9 @@ export default class MailStore {
     this._answer = answer;
   }
 
-  setTypes(types) {
-    this._types = types;
+  setFolder(folder) {
+    this._folder = folder;
   }
-  updateTypes(newTypes) {
-    this._types = { ...this._types, ...newTypes };
-  }
-
   setMsg(msg) {
     this._msg = msg;
   }
@@ -52,4 +48,3 @@ export default class MailStore {
   }
 }
 export const mailStore = new MailStore();
-export const types = mailStore.types;

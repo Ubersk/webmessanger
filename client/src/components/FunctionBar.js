@@ -14,8 +14,8 @@ const FunctionBar = observer(() => {
   }
 
   function Refresh (){
-    navigate (CREATE_MSG_ROUTES);
     navigate (MAIL_ROUTES);
+
   }
   const [search_text, setSearch] = useState("")
   mailStore.setSearch(search_text);
@@ -47,7 +47,8 @@ const FunctionBar = observer(() => {
           <div>
             <button type="button" className="btn btn-success btn-sm" onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</button>
             {/* <button className="m-1 btn btn-warning text-white btn-sm" onClick={() => EventWindow()}>Глобальное сообщение</button> */}
-            <button className="m-1 btn btn-primary text-white btn-sm" onClick={() => Refresh()}>Обновить</button>
+            <a className="m-1 btn btn-primary text-white btn-sm" href="/">Обновить</a>
+            
 
           </div>
     </div>
