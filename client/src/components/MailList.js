@@ -45,6 +45,8 @@ console.log(mailStore.folder)
       msgs = mailStore.msg.filter(item => item.msg_type === 3 && item.userIdUser === idUserAuth); 
        Search();
       break;
+      default:
+      break;
     }
 
     // setTimeout("window.location.reload()",60000) 

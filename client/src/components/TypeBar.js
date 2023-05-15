@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 const TypeBar = observer(() => {
-  const {mailStore, userStore} = useContext(Context)
+  const {mailStore} = useContext(Context)
   
   return (
     <div id="typebar" className="container">
