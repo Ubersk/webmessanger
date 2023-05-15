@@ -38,11 +38,11 @@ console.log(mailStore.folder)
       Search();
       break;
       case 4://take
-      msgs = mailStore.msg.filter(item => item.userIdUser === idUserAuth && item.msg_type !== 2);
+      msgs = mailStore.msg.filter(item => item.userIdUser === idUserAuth);
       Search();
       break;
       case 5: //del
-      msgs = mailStore.msg.filter(item => item.msg_type !== 1 && item.userIdUser === idUserAuth); 
+      msgs = mailStore.msg.filter(item => item.msg_type === 3 && item.userIdUser === idUserAuth); 
        Search();
       break;
     }
