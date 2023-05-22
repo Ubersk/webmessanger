@@ -20,16 +20,40 @@ function Search(){
     console.log(msgs);
   } 
 }
+
+function NewMsgs(){ 
+ let today = new Date();
+ console.log(msgs);
+ let filteredData = msgs.filter(item => {
+  if (!(item.date_create instanceof Date)) { // проверяем, является ли свойство date_create объектом Date
+    item.date_create = new Date(item.date_create); // если нет, то конвертируем его в объект Date
+  }
+  let diff = today.getTime() - item.date_create.getTime(); // вычисляем разницу в миллисекундах между датами
+  let diffInDays = diff / (1000 * 3600 * 24); // переводим разницу в дни
+  console.log(diffInDays)
+
+  return diffInDays <= 1; // возвращаем только объекты, у которых дата создания меньше сегодняшней на один день или меньше
+});
+
+if (filteredData.length === 0) { // если нет объектов, у которых дата создания меньше сегодняшней на один день или меньше
+  console.log("Нет данных"); // выводим сообщение
+
+} else { // иначе
+  msgs = filteredData;
+  console.log(filteredData); // выводим список этих объектов
+}
+}
  
 //Реализация папок сообщений
 console.log(mailStore.folder)
+
     switch (mailStore.folder) {
       case 1: //all
        msgs = mailStore.msg.filter(item => item.userIdUser === idUserAuth || item.user_creator === idUserAuth);
        Search();
         break;
-      case 2: 
-      alert("В разработке")
+      case 2: //new
+      NewMsgs();
       Search();
 
       break;

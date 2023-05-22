@@ -23,25 +23,23 @@ function AnswerOnMsg() {
   console.log(mailStore.answer);
   navigate(CREATE_MSG_ROUTES);
 }
-
+function DeleteMsg(){
+  console.log(mail);
+}
 function ForwardMsg() {
   const title = "Переслано от: " + mail.user_creator+" Тема: " + mail.message_title
   const user = "";
   const text = "\n>>пишет: " +mail.user_creator+" "+ mail.message_body;
   mailStore.setAnswer({title, user, text})
   console.log(mailStore.answer);
+
   navigate(CREATE_MSG_ROUTES);  
 }
-function DeleteMsg(value){
-  value.msg_type = 1
-  console.log(value);
-}
+
 
 
 
   useEffect(() =>{
-
-   
 
     fetchOneMsg(id).then(data => {
 
@@ -50,8 +48,10 @@ function DeleteMsg(value){
       if (data.userIdUser !== idUserAuth && data.user_creator !== idUserAuth) {
         alert('У вас нет доступа к этой странице');
         navigate(MAIL_ROUTES);
-      console.log(idUserAuth)
+      console.log(data)
       }
+
+
 
       //Обработка автора сообщения
       const users = Object.values(userStore.users);
@@ -63,7 +63,6 @@ function DeleteMsg(value){
       const UserReciever = users.find(user => user.id_user === data.userIdUser);
       const user_reciever_name = UserReciever ? UserReciever.name : 'Неизвестный получатель';
       data.userIdUser = user_reciever_name;    
-      DeleteMsg(data);
     })
     
   },[])

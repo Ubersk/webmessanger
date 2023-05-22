@@ -85,14 +85,14 @@ const CreateMsg = () => {
             onChange={(e) => setTextBody(e.target.value)}
             className="form-control resize-none;"></textarea>
         </div>
-        <div className="d-flex mt-3">
+        {/* <div className="d-flex mt-3">
           <span className="input-group-text">Прикрепить файл</span>
           <input
           value={files_body}
           onChange={(e) => setFilesBody(e.target.value)} 
           className="m-1" 
           type="file"></input>
-        </div>
+        </div> */}
         <Row className={"d-flex justify-content-around"}>
           <Button
             style={{maxWidth:200}}

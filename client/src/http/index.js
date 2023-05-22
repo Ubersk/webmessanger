@@ -2,11 +2,11 @@ import axios from "axios";
 
 //Запросы для не авторизованных пользователей
 const $host = axios.create({
-  baseURL: "http://192.168.192.106:7000/",
+  baseURL: "http://192.168.0.14:7000/",
 });
 
 const $authHost = axios.create({
-  baseURL: "http://192.168.192.106:7000/",
+  baseURL: "http://192.168.0.14:7000/",
 });
 const authInterceptor = (config) => {
   
