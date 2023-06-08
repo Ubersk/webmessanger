@@ -30,7 +30,7 @@ const FunctionBar = observer(() => {
   return (
   <div className="container">
     <div className="row">
-        <div className="input-group mb-3">
+        <div className="input-group mb-2">
           <input 
           type="text" 
           className="form-control" 
@@ -39,7 +39,7 @@ const FunctionBar = observer(() => {
           onChange={(e) => setSearch(e.target.value)}/>
             <div className="input-group-append">
             <button 
-            className="btn btn-outline-secondary" 
+            className="btn btn-outline-secondary"
             type="button"
             onClick={() => Search()}>Поиск</button>
             </div>
