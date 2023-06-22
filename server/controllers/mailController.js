@@ -31,7 +31,10 @@ class MessageController {
     }
 
   }
-async deleteMsg(req, res) {}
+async deleteMsg(req, res) {
+  const result = await Message.update({ msg_type: 1 }, { where: { id: req.params.id } });
+  return res.json(result);
+}
 
   async getAllMsg(req, res) {
     const mail = await Message.findAll({ include: [User, Poluchateli] });

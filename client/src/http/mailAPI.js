@@ -14,3 +14,7 @@ export const fetchOneMsg = async (id) => {
   return  data;
 };
 
+export const deleteMsg = async (id) => {
+  const {data} = await $authHost.put("api/mail/" + id, { msg_type: 1 });
+  return data;
+};

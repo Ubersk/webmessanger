@@ -6,6 +6,7 @@
   import { useNavigate } from "react-router-dom";
   import { MAIL_ROUTES} from "../utils/consts";
   import { CREATE_MSG_ROUTES} from "../utils/consts";
+  import { deleteMsg } from "../http/mailAPI";
 
 
   const MailPage = () => {
@@ -23,7 +24,8 @@
     console.log(mailStore.answer);
     navigate(CREATE_MSG_ROUTES);
   }
-  function DeleteMsg(){
+    async function deleteMessage() {
+      await deleteMsg(mail.id_message);
     console.log(mail);
   }
   function ForwardMsg() {
@@ -85,7 +87,7 @@
         <Button className="m-1 border border-secondary" variant={"success"} onClick={() => navigate(CREATE_MSG_ROUTES)}>Создать</Button>
         <Button className="m-1 border border-secondary" variant={"primary"} onClick={() => AnswerOnMsg()}>Ответить</Button>
         <Button className="m-1 border border-secondary" variant={"primary"} onClick={() => ForwardMsg()}>Переслать</Button>
-        <Button className="m-1 border border-secondary" variant={"danger"} onClick={() => DeleteMsg()}>Удалить</Button>
+        <Button className="m-1 border border-secondary" variant={"danger"} onClick={() => deleteMessage()}>Удалить</Button>
         </div>
         <Card className="m-1 border border-secondary">
         <Col>
