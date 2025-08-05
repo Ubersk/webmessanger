@@ -18,8 +18,10 @@
     "express-fileupload": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
     "mssql": "^9.0.1",
+    "pg": "^8.16.3",
     "sequelize": "^6.25.8",
     "tedious": "^15.1.2",
+    "typeorm": "^0.3.25",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
